@@ -1,4 +1,12 @@
+import java.util.*;
+
 public class isBalancedTree {
+    class TreeNode
+    {
+        TreeNode left, right;
+        int val;
+        TreeNode(int val) {this.val = val;}
+    }
     int checkHeight(TreeNode root) {
         if (root == null) return -1;
         int leftHeight = checkHeight(root.left);

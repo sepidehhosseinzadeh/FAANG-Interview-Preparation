@@ -12,7 +12,8 @@ public class allPathsBetween2Nodes {
     // vertices in the current path
     private void printAllPathsUtil(Integer u, Integer d,
                                    boolean[] isVisited,
-                                   List<Integer> localPathList) {
+                                   List<Integer> localPathList,
+                                   List<Integer>[] adjList) {
 
         // Mark the current node
         isVisited[u] = true;
@@ -34,7 +35,7 @@ public class allPathsBetween2Nodes {
                 // store current node
                 // in path[]
                 localPathList.add(i);
-                printAllPathsUtil(i, d, isVisited, localPathList);
+                printAllPathsUtil(i, d, isVisited, localPathList, adjList);
 
                 // remove current node
                 // in path[]
