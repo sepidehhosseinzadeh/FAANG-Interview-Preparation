@@ -7,22 +7,21 @@ Given a string S with repeated characters (only lowercase).
 Rearrange characters in a string such that
 no two adjacent characters are same.
  */
-class Node implements Comparable<Node>
-{
-    char ch;
-    int cnt;
-    Node(char ch, int cnt)
+class reargeNoCnsectiv {
+    static class Node implements Comparable<Node>
     {
-        this.ch = ch;
-        this.cnt = cnt;
+        char ch;
+        int cnt;
+        Node(char ch, int cnt)
+        {
+            this.ch = ch;
+            this.cnt = cnt;
+        }
+        public int compareTo(Node that)
+        {
+            return that.cnt-this.cnt;
+        }
     }
-    public int compareTo(Node that)
-    {
-        return that.cnt-this.cnt;
-    }
-}
-
-class GFG {
     public static void main (String[] args) {
         Scanner scan = new Scanner(System.in);
         int t = scan.nextInt();
