@@ -4,14 +4,6 @@ import java.util.*;
 import java.lang.*;
 
 class nPalinSubStr {
-    static class Index
-    {
-        int x, y;
-        Index(int X, int Y)
-        {
-            x = X; y = Y;
-        }
-    }
     public static void main (String[] args)
     {
         Scanner sc = new Scanner(System.in);
@@ -23,36 +15,39 @@ class nPalinSubStr {
             sc.nextLine();
 
             String s = sc.nextLine();
-            System.out.println(count(s.toCharArray(), 0,
-                        s.length()-1,  new HashSet<Index>()));
+            System.out.println(cntPalin(s.toCharArray()));
         }
     }
-    static int count(char[] ch, int s, int e, HashSet<Index> seen)
+    static int cntPalin(char[] ch)
     {
-        if(s > e)   return 0;
-        if(s == e)   return 1;
-
-        int cnt = 0;
-        for(int i = s; i <= e; i++)
+        int n = ch.length;
+        int[][] cnt = new int[n][n];
+        boolean[][] isPalin = new boolean[n][n];
+        for(int i = 0; i < n; i++)
+            isPalin[i][i] = true;
+        for(int i = 0; i+1 < n; i++)
         {
-            Index at = new Index(s, i);
-            if (!seen.contains(at) && isPalin(ch, s, i))
-            {
-                seen.add(at);
-                cnt += count(ch, i + 1, e, seen);
-                seen.remove(at);
-            }
+            if(ch[i] == ch[i+1])
+                isPalin[i][i+1] = true;
         }
-        return cnt;
+
+        for(int l = 1; l < n; l++)
+            for(int i = 0; i+l < n; i++)
+            {
+                int j = i+l;
+                if (isPalin[i][j] || (isPalin[i][j]=isPalin(ch, i, j)))
+                    cnt[i][j] = cnt[i+1][j]+cnt[i][j-1]+1-cnt[i+1][j-1];
+                else
+                    cnt[i][j] = cnt[i+1][j]+cnt[i][j-1]-cnt[i+1][j-1];
+            }
+        return cnt[0][n-1];
     }
-    static boolean isPalin(char[] ch, int s, int e)
-    {
-        //if(s==e)    return false;
-        int i = s, j = e;
+
+    private static boolean isPalin(char[] ch, int i, int j) {
         while(i < j)
         {
-            if(ch[i] != ch[j])  return false;
-            i++; j--;
+            if(ch[i]!=ch[j])    return false;
+            i++;j--;
         }
         return true;
     }
