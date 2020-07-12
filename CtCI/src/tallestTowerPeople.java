@@ -37,12 +37,12 @@ public class tallestTowerPeople {
             return tallestTillNow;
 
         ArrayList<Person> withAt = (ArrayList<Person>) tallestTillNow.clone();
-        if (canPut(people, at, withAt)) {
+        if (canPut(people, at, withAt))
         {
             withAt.add(people.get(at));
             withAt = getTallestTower(at + 1, people, withAt);
         }
-        }
+
         ArrayList<Person> withoutAt = getTallestTower(at+1, people,
                                                                 tallestTillNow);
 
