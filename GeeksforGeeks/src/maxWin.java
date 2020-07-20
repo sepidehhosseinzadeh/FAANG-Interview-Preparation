@@ -16,6 +16,7 @@ class maxWin {
                 arr[i] = sc.nextInt();
 
             maxWin_v1(arr, n, k);
+            System.out.println();
         }
     }
     // O((k+log(k)) * n) = O(kn)
@@ -44,52 +45,28 @@ class maxWin {
         Deque<Integer> deque = new LinkedList<>();
         // addLast elements, and at the time of moving win removeFirst
         // unuseful elements that are before i-k win because max is at index i
-        for(int i = 0; i < k; i++)
+        int i = 0;
+        for(; i < k; i++)
         {
-            while (!deque.isEmpty() && deque.peekFirst() < arr[i])
-                deque.pollFirst();
+            while (!deque.isEmpty() && arr[deque.peekLast()] <= arr[i])
+                deque.pollLast();
             deque.addLast(i);
-
         }
+        for(; i < n; i++)
+        {
+            System.out.print(arr[deque.peekFirst()]+" ");
+
+            while (!deque.isEmpty() && deque.peekFirst() <= i-k)
+                deque.pollFirst();
+
+            while (!deque.isEmpty() && arr[deque.peekLast()] <= arr[i])
+                deque.pollLast();
+
+            deque.addLast(i);
+        }
+        System.out.print(arr[deque.peekFirst()]+" ");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // O(n)   !!!!!
+    // O(n)
     // A Dequeue (Double ended queue) based method for printing maximum element of
     // all subarrays of size k
     static void maxWin_v1_0(int arr[], int n, int k)
