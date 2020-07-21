@@ -1,10 +1,8 @@
-/*package whatever //do not write package name here */
-
 import java.util.*;
 import java.lang.*;
-import java.io.*;
 
-class GFG {
+// Top k numbers in a stream: print all distinct elements sorted by frequency.
+class topKnumStream {
     static class Node implements Comparable<Node>
     {
         int val, cnt;
@@ -12,12 +10,12 @@ class GFG {
         {
             val = v; cnt = c;
         }
+        @Override
         public int compareTo(Node o)
         {
             return this.cnt != o.cnt ?
-                    o.cnt-this.cnt : this.val-o.val;
+                    o.cnt - this.cnt : this.val - o.val;
         }
-
         @Override
         public boolean equals(Object o) {
             Node node = (Node) o;
