@@ -15,7 +15,6 @@ public class allPathsBetween2Nodes {
                                    List<Integer> localPathList,
                                    List<Integer>[] adjList) {
 
-        // Mark the current node
         isVisited[u] = true;
 
         if (u.equals(d))
@@ -25,25 +24,16 @@ public class allPathsBetween2Nodes {
             isVisited[u]= false;
             return ;
         }
-
-        // Recur for all the vertices
-        // adjacent to current vertex
         for (Integer i : adjList[u])
         {
             if (!isVisited[i])
             {
-                // store current node
-                // in path[]
                 localPathList.add(i);
                 printAllPathsUtil(i, d, isVisited, localPathList, adjList);
-
-                // remove current node
-                // in path[]
                 localPathList.remove(i);
             }
         }
 
-        // Mark the current node
         isVisited[u] = false;
     }
 }
