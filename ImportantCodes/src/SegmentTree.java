@@ -37,7 +37,7 @@ public class SegmentTree {
                 update(segTree, v * 2, tl, tm, pos, new_val);
             else
                 update(segTree, v * 2 + 1, tm + 1, tr, pos, new_val);
-            segTree[v] = segTree[v * 2] + segTree[v * 2 + 1];
+            segTree[v] = Math.min(segTree[v * 2], segTree[v * 2 + 1]);
         }
     }
 }

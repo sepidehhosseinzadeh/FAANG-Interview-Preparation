@@ -1,7 +1,7 @@
 import java.util.*;
 import java.lang.*;
 
-class maxWin {
+class maxWinDequeue {
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
@@ -43,8 +43,8 @@ class maxWin {
     static void maxWin_v1(int[] arr, int n, int k)
     {
         Deque<Integer> deque = new LinkedList<>();
-        // addLast elements, and at the time of moving win removeFirst
-        // unuseful elements that are before i-k win because max is at index i
+        // addLast elements, and at the time of moving window removeFirst (shrink from begining)
+        // unuseful elements that are before i-k window because max is at index i
         int i = 0;
         for(; i < k; i++)
         {
@@ -61,7 +61,6 @@ class maxWin {
 
             while (!deque.isEmpty() && arr[deque.peekLast()] <= arr[i])
                 deque.pollLast();
-
             deque.addLast(i);
         }
         System.out.print(arr[deque.peekFirst()]+" ");

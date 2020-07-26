@@ -1,9 +1,6 @@
 import java.util.*;
 
 public class KMP {
-    public static void main(String[] args)
-    {
-    }
     static void kmp(String pat_, String txt_)
     {
         char[] pat = pat_.toCharArray();
