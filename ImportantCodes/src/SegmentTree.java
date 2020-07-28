@@ -13,6 +13,19 @@ public class SegmentTree {
         constructTree(input, segTree, mid + 1, high, 2 * pos + 2);
         segTree[pos] = Math.min(segTree[2 * pos + 1], segTree[2 * pos + 2]);
     }
+    void updateTree(int new_val, int new_val_idx, int[] segTree, int low, int high, int pos) {
+        if (low == high) {
+            segTree[pos] = new_val;
+            return;
+        }
+
+        int mid = (low + high) / 2;
+        if (new_val_idx <= mid)
+            updateTree(new_val, new_val_idx, segTree, low, mid, pos*2);
+        else
+            updateTree(new_val, new_val_idx, segTree, mid+1, high, pos*2+1);
+        segTree[pos] = Math.min(segTree[pos * 2], segTree[pos * 2 + 1]);
+    }
 
     int rangeMinQuery(int[] input, int[] segTree, int qlow, int qhigh,
                       int low, int high, int pos)
@@ -28,16 +41,5 @@ public class SegmentTree {
                 rangeMinQuery(input, segTree, qlow, qhigh, mid + 1, high, 2 * pos + 2));
     }
 
-    void update(int[] segTree, int v, int tl, int tr, int pos, int new_val) {
-        if (tl == tr) {
-            segTree[v] = new_val;
-        } else {
-            int tm = (tl + tr) / 2;
-            if (pos <= tm)
-                update(segTree, v * 2, tl, tm, pos, new_val);
-            else
-                update(segTree, v * 2 + 1, tm + 1, tr, pos, new_val);
-            segTree[v] = Math.min(segTree[v * 2], segTree[v * 2 + 1]);
-        }
-    }
+
 }
