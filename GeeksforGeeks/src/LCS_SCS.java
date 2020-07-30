@@ -11,13 +11,37 @@ public class LCS_SCS {
             String[] str = sc.nextLine().split("[ ]");
             char[] s1 = str[0].toCharArray();
             char[] s2 = str[1].toCharArray();
+            int n = s1.length, m = s2.length;
 
-            System.out.println(SCS(s1,s2));
-            System.out.println(LCS(s1,s2));
+            System.out.println(SCS(s1,s2)[n][m]);
+            System.out.println(LCS(s1,s2)[n][m]);
+            System.out.println("SCS String: "+ buildSCS(s1,s2));
         }
     }
+
+    // Longest Common Subsequence
+    static int[][] LCS( char[] s1, char[] s2)
+    {
+        int n = s1.length, m = s2.length;
+
+        int lcs[][] = new int[n+1][m+1];
+        for (int i=0; i<=n; i++)
+        {
+            for (int j=0; j<=m; j++)
+            {
+                if (i == 0 || j == 0)
+                    lcs[i][j] = 0;
+                else if (s1[i-1] == s2[j-1])
+                    lcs[i][j] = lcs[i-1][j-1] + 1;
+                else
+                    lcs[i][j] = Math.max(lcs[i-1][j], lcs[i][j-1]);
+            }
+        }
+        return lcs;
+    }
+
     // Shortest Common Supersequence
-    static int SCS(char[] s1, char[] s2)
+    static int[][] SCS(char[] s1, char[] s2)
     {
         int n = s1.length, m = s2.length;
         int[][] scs = new int[n+1][m+1];
@@ -33,26 +57,31 @@ public class LCS_SCS {
                 else
                     scs[i][j] = Math.min(scs[i-1][j], scs[i][j-1])+1;
 
-        return scs[n][m];
+        return scs;
     }
-    // Longest Common Subsequence
-    static int LCS( char[] s1, char[] s2)
+    // build String
+    static String buildSCS(char[] ch1, char[] ch2)
     {
-        int n = s1.length, m = s2.length;
+        int n = ch1.length, m = ch2.length;
+        int[][] scs = SCS(ch1, ch2);
 
-        int lcs[][] = new int[m+1][n+1];
-        for (int i=0; i<=m; i++)
-        {
-            for (int j=0; j<=n; j++)
-            {
-                if (i == 0 || j == 0)
-                    lcs[i][j] = 0;
-                else if (s1[i-1] == s2[j-1])
-                    lcs[i][j] = lcs[i-1][j-1] + 1;
-                else
-                    lcs[i][j] = Math.max(lcs[i-1][j], lcs[i][j-1]);
-            }
+        String res = "";
+        int i = n, j = m;
+        while(i > 0 && j > 0) {
+            if(ch1[i-1] == ch2[j-1])
+            {res = ch1[i-1]+res; i--; j--;}
+            else if(scs[i-1][j] < scs[i][j-1])
+            {res = ch1[i-1]+res; i--;}
+            else
+            {res = ch2[j-1]+res; j--;}
         }
-        return lcs[m][n];
+        while(i > 0) {
+            res = ch1[i-1]+res; i--;
+        }
+        while(j > 0) {
+            res = ch2[j-1]+res; j--;
+        }
+
+        return res;
     }
 }
