@@ -7,56 +7,26 @@ public class permutSubStr {
         System.out.println(checkInclusion("ab", "eidboaoo"));
         System.out.println(checkInclusion("acb", "acab"));
     }
-    public static boolean checkInclusion(String s1, String s2) {
-        HashMap<Character, Integer> s1m = new HashMap<>();
-        HashMap<Character, Integer> cur = new HashMap<>();
+    public static boolean checkInclusion(String S1, String S2) {
+        char[] s1 = S1.toCharArray();
+        char[] s2 = S2.toCharArray();
+        int n1 = s1.length, n2 = s2.length;
+        int[] map = new int[26];
+        int fit = 0;
+        for(int i = 0; i < n1; i++)
+            map[s1[i]-'a']++;
 
-        for(int i = 0; i < s1.length(); i++)
-            s1m.put(s1.charAt(i), s1m.getOrDefault(s1.charAt(i),0)+1);
-
-        int i = 0, j = 0;
-        while(j < s2.length())
+        for(int i = 0; i < n2; i++)
         {
-            char c = s2.charAt(j);
-
-            if(s1m.containsKey(c))
-            {
-                if(!cur.containsKey(c) || s1m.get(c) > cur.get(c))
-                    cur.put(c, cur.getOrDefault(c,0)+1);
-                else
-                {
-                    while(i<=j && cur.containsKey(s2.charAt(i)) &&
-                            (s1m.get(s2.charAt(i)) < cur.get(s2.charAt(i)) ||
-                                    s2.charAt(i)==c))
-                    {
-                        cur.put(s2.charAt(i), cur.get(s2.charAt(i))-1);
-                        if(cur.get(s2.charAt(i)) == 0)
-                            cur.remove(s2.charAt(i));
-                        i++;
-                    }
-                    cur.put(c, cur.getOrDefault(c,0)+1);
-                }
-            }
-            else
-            {
-                if(j-i==s1.length() && checkEq(cur, s1m))
-                    return true;
-                cur.clear();
-                i = j+1;
-            }
-            if(j-i+1==s1.length() && checkEq(cur, s1m))
-                return true;
-            j++;
+            if(i>=n1) map[s2[i-n1]-'a']++;
+            map[s2[i]-'a']--;
+            if(match(map)) return true;
         }
         return false;
     }
-    static boolean checkEq(HashMap<Character, Integer> a, HashMap<Character, Integer> b)
-    {
-        if(a.size() != b.size()) return false;
-        for(char c : a.keySet())
-            if(!b.containsKey(c) || a.get(c) != b.get(c))
-                return false;
-
-        return true;
+    static boolean match(int[] map) {
+        int fit = 0;
+        for(int i : map) if(i == 0) fit++;
+        return fit == 26;
     }
 }
