@@ -22,7 +22,8 @@ class Trie {
         TrieNode t = root;
         for(char c : ch)
         {
-            if(t.child[c-'a'] == null) t.child[c-'a'] = new TrieNode(c);
+            if(t.child[c-'a'] == null)
+                t.child[c-'a'] = new TrieNode(c);
             t = t.child[c-'a'];
         }
         t.isWord = true;
