@@ -1,5 +1,10 @@
 import java.util.*;
 
+/*
+Given an array arr[] of positive integers.
+Find the length of the longest sub-sequence such that elements in the subseq
+are consecutive integers, the consecutive numbers can be in any order.
+*/
 public class LonContiSeq {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
