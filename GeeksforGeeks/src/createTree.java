@@ -1,4 +1,6 @@
 import javax.crypto.NullCipher;
+import javax.swing.*;
+import java.nio.file.NotDirectoryException;
 import java.sql.Array;
 import java.util.*;
 
@@ -72,6 +74,36 @@ public class createTree {
         }
 
         return root;
+    }
+    static Node root;
+    public static Node createTree_Opt(int arr[], int n)
+    {
+        root = null;
+        Node[] create = new Node[n];
+        for(int i = 0; i < n; i++) create[i] = null;
+
+        for(int i = 0; i < n; i++)
+            createNode(arr, i, create);
+        return root;
+    }
+    static void createNode(int[] parent, int at, Node[] created)
+    {
+        if(created[at] != null) return;
+
+        created[at] = new Node(at);
+        if(parent[at] == -1)
+        {
+            root = created[at];
+            return;
+        }
+        if(created[parent[at]] == null)
+            createNode(parent, parent[at], created);
+
+        Node p = created[parent[at]];
+        if(p.left == null)
+            p.left = created[at];
+        else
+            p.right = created[at];
     }
 }
 
