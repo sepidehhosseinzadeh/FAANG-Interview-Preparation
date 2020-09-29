@@ -1,5 +1,7 @@
 import java.util.*;
 
+/*Given a binary matrix, find out the maximum size square sub-matrix with all 1s.*/
+
 class maxSqureOf1 {
     public static void main(String[] args)
     {

@@ -1,5 +1,19 @@
 import java.util.*;
 
+/*Given an array arr[] of N nodes representing preorder traversal of BST.
+The task is to print its postorder traversal.
+Example:
+Input:
+3
+5
+40 30 35 80 100
+8
+40 30 32 35 80 90 100 120
+
+Output:
+35 30 100 80 40
+35 32 30 120 100 90 80 40
+ */
 public class printPostFromPreOrderBST {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
