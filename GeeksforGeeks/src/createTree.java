@@ -117,7 +117,7 @@ public class createTree {
 
         Node p = created[parent[at]];
         if(p.left == null)
-            p.left = created[at];
+            p.left = created[at]; // NOT new Node(at)!
         else
             p.right = created[at];
     }

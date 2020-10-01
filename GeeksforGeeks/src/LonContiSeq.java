@@ -28,7 +28,7 @@ public class LonContiSeq {
         for (int i : arr) set.add(i);
 
         for (int i : arr) {
-            if (set.contains(i) && !set.contains(i - 1)) {
+            if (set.contains(i) && !set.contains(i - 1)) { // start of a seq
                 int j = i;
                 while (set.contains(j)) j++;
 
