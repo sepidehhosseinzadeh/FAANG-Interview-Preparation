@@ -1,4 +1,4 @@
-import javax.swing.plaf.IconUIResource;
+import java.util.*;
 
 public class waysBooleanEvalution {
     public static void main(String[] a)
