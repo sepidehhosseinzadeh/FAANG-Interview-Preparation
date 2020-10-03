@@ -1,5 +1,6 @@
 import java.util.*;
 
+// Merge intervals, using stack
 class mergeIntervals {
     static class Interval implements Comparable<Interval>
     {
