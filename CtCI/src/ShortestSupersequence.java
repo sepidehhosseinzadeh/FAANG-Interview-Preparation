@@ -1,6 +1,7 @@
-import jdk.jshell.EvalException;
-
 import java.util.*;
+
+// This is the Greedy approach with a assumtion that the small array doeasn't have repeation.
+// SCS: Shortest Common Supersequence
 
 public class ShortestSupersequence {
     /*Given two arrays, one shorter (with all distinct elements) and one longer.
@@ -38,7 +39,6 @@ public class ShortestSupersequence {
         HashMap<Integer, Queue<Integer>> table = new HashMap<>();
         for(int s : small)
             table.put(s, new LinkedList<>());
-
 
         for(int i = 0; i < big.length; i++)
         {
