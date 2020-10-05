@@ -1,7 +1,7 @@
 import java.util.*;
 import java.lang.*;
 
-class maxWinDequeue {
+class maxSlidingWindow {
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
@@ -15,12 +15,15 @@ class maxWinDequeue {
             for(int i = 0; i < n; i++)
                 arr[i] = sc.nextInt();
 
-            maxWin_v1(arr, n, k);
+            maxSlidingWindow_v0(arr, n, k);
+            System.out.println();
+
+            maxSlidingWindow_opt(arr, n, k);
             System.out.println();
         }
     }
     // O((k+log(k)) * n) = O(kn)
-    static void maxWin_v0(int[] arr, int n, int k)
+    static void maxSlidingWindow_v0(int[] arr, int n, int k)
     {
         PriorityQueue<Integer> curWin = new PriorityQueue<>(
                 Collections.reverseOrder());
@@ -40,13 +43,13 @@ class maxWinDequeue {
         }
         System.out.println();
     }
-    static int[] maxSlidingWindow(int[] arr, int k) {
-        int[] res = new int[arr.length-k+1];
+    static int[] maxSlidingWindow_opt(int[] arr, int n, int k) {
+        int[] res = new int[n-k+1];
         
         Deque<Integer> dq = new ArrayDeque<>();
 	    
         int j = 0;
-	    for(int i = 0; i < arr.length; i++)
+	    for(int i = 0; i < n; i++)
 	    {
 	        while(!dq.isEmpty() && dq.peek() <= i-k)
 	            dq.remove();
