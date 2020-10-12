@@ -1,4 +1,4 @@
-<img src="github_pic.png" alt="github progress" width="600" height="100">
+<img src="github_pic.png" alt="github progress" width="600" height="200">
 ## FAANG Interview Coding Preparation
 ### Step 0 - Coding until you solve the questions in 45 min
 Look at the solution if you can't solve it in 30 mins.
