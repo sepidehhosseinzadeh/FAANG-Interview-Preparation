@@ -1,8 +1,10 @@
 <img src="github_pic.png" alt="github progress" width="600" height="200">
+
 ## FAANG Interview Coding Preparation
 ### Step 0 - Coding until you solve the questions in 45 min
 Look at the solution if you can't solve it in 30 mins.
 Weekly leetcode/topcoder contests, track progress, note the questions with link for later review.
+
 <img src="leetcode_pic.png" alt="leetcode contest progress" width="500" height="300">
 
 ### Step 1 - System Design: 
