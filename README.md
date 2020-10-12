@@ -173,12 +173,16 @@ Heap
 - Top K Frequent Elements - https://leetcode.com/problems/top-k-frequent-elements/
 - Find Median from Data Stream - https://leetcode.com/problems/find-median-from-data-stream/
 
-* More questions:
-https://seanprashad.com/leetcode-patterns/       h
-ttps://www.youtube.com/channel/UC_mYaQAE6-71rjSN6CeCA-g 
+
+---
+
+** More questions: ** 
+https://seanprashad.com/leetcode-patterns/       
+https://www.youtube.com/channel/UC_mYaQAE6-71rjSN6CeCA-g 
 
 ### Step 3 - A week before the interview: 
 Company specific leetcode explore questions
 Company tagged leetcode discuss
+https://www.pramp.com/ everyday
 
 Followed this for 3 months.
