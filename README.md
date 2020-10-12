@@ -7,41 +7,245 @@ Weekly leetcode/topcoder contests, track progress, note the questions with link 
 
 <img src="leetcode_pic.png" alt="leetcode contest progress" width="500" height="300">
 
-### Step 1 - System Design: 
+### Step 1: Code and System Design:
+#### Coding Interview Problems: 
 https://www.educative.io/courses/coderust-hacking-the-coding-interview
 Do not buy educative. Search the questions on leetcode.
 I was not able to do most of them so please look at the answer and upsolve. This will give you a great base to solve other similar questions.
 
+1. Arrays
+Implement Binary Search on a Sorted Array
+
+Find Maximum in Sliding Window
+
+Search a Rotated Array
+
+Find the Smallest Common Number
+
+Rotate an Array by N Elements
+
+Find Low/High Index of a Key in a Sorted Array
+
+Move All Zeros to the Beginning of the Array
+
+Stock Buy Sell to Maximize Profit
+
+Merge an Array With Overlapping Intervals
+
+Find Pair With Given Sum in an Array
+
+Sort an Array Using Quicksort Algorithm
+
+2. Linked List
+Implementation of Linked List
+
+Reverse a Singly Linked List
+
+Remove Duplicates from a Linked List
+
+Delete All Occurrences of a Given Key in a Linked List
+
+Sort Linked List Using Insertion Sort
+
+Intersection Point of Two Lists
+
+Find n'th Node from the End of a Linked List
+
+Swap Nth Node with Head
+
+Merge Two Sorted Linked Lists
+
+Sort a Linked List Using Merge Sort
+
+Reverse Even Nodes in a Linked List
+
+Rotate a Linked List
+
+Reverse Alternate K Nodes in a Singly Linked List
+
+Add Two Integers Represented by Linked Lists
+
+Copy Linked List with Arbitrary Pointer
+
+3. Math & Stats
+Find kth Permutation
+
+Integer Division Without Using * or /
+
+Pythagorean Triplets
+
+All Possible Combinations for a Given Sum
+
+Find Missing Number
+
+Print All Permutations of a String
+
+Find All Subsets of a Set
+
+Is String a Valid Number?
+
+Calculate Power of a Number
+
+Calculate Square Root of a Number
+
+4. Strings
+Reverse Words in a Sentence
+
+Remove Duplicates from a String
+
+Remove White Spaces from a String
+
+Word Break Problem
+
+XML to Tree
+
+Find all Palindrome Substrings
+
+Regular Expression Matching in String
+
+5. Trees
+Implementation of Binary Tree
+
+Check if Two Binary Trees are Identical
+
+Write an In-Order Iterator for a Binary Tree
+
+Iterative In-Order Traversal of Binary Tree
+
+In-order Successor of Binary Search Tree
+
+In-order Successor Binary Search Tree With Parent Pointers
+
+Level Order Traversal of Binary Tree
+
+Is a Binary Search Tree Valid?
+
+Convert Binary Tree to Doubly Linked List
+
+Print Tree Perimeter
+
+Connect Same Level Siblings of a Binary Tree
+
+Connect All Siblings of a Binary Tree
+
+Serialize/Deserialize Binary Tree
+
+Nth Highest Number in Binary Search Tree
+
+Mirror Binary Tree Nodes
+
+Delete Zero Sum Sub-Trees
+
+Convert N-ary Tree to Binary Tree
+
+6. Stacks and Queues
+Implement Stack Using Queues
+
+Implement Queue Using Stacks
+
+Evaluate Arithmetic Expressions
+
+7. Graphs
+Clone a Directed Graph
+
+Minimum Spanning Tree
+
+Word Chaining
+
+8. Back Tracking
+Boggle
+
+Print All Combinations of Balanced Braces
+
+Solve N-Queens Problem
+
+Find K-Sum Subsets
+
+9. Dynamic Programming
+Fibonacci Numbers
+
+Largest Sum Subarray
+
+MaxSum Subsequence - Nonadjacent Elements
+
+Find Combinations for Game Scoring
+
+Coin Changing Problem
+
+Levenshtein Distance
+
+10. Miscellaneous
+Sum of Three Values
+
+Make Columns and Rows Zeros
+
+Search in a Matrix
+
+Implement LRU Cache
+
+Determine Host Byte Order (Endianness)
+
+Closest Meeting Point
+
+#### System Design: 
 1. System Design Problems
 System Design Interviews: A step by step guide
+
 Designing a URL Shortening service like TinyURL
+
 Designing Pastebin
+
 Designing Instagram
+
 Designing Dropbox
+
 Designing Facebook Messenger
+
 Designing Twitter
+
 Designing Youtube or Netflix
+
 Designing Typeahead Suggestion
+
 Designing an API Rate Limiter
+
 Designing Twitter Search
+
 Designing a Web Crawler
+
 Designing Facebook’s Newsfeed
+
 Designing Yelp or Nearby Friends
+
 Designing Uber backend
+
 Design Ticketmaster
+
+Additional Resources
 
 2. Glossary of System Design Basics
 System Design Basics
+
 Key Characteristics of Distributed Systems
+
 Load Balancing
+
 Caching
+
 Data Partitioning
+
 Indexes
+
 Proxies
+
 Redundancy and Replication
+
 SQL vs. NoSQL
+
 CAP Theorem
+
 Consistent Hashing
+
 Long-Polling vs WebSockets vs Server-Sent Events
 
 
