@@ -4,6 +4,8 @@
 ### Step 0 - Coding until you solve the questions in 45 min
 - Look at the solution if you can't solve it in 30 mins.
 - Weekly leetcode/topcoder contests, track progress, note the questions with link for later review.
+
+#### How to study:
 - Use timer for 45 min, solve/study
 - Use a work station separate from your rest station.
 - After 45 min, you must rest and treat yourself.
@@ -12,6 +14,16 @@
 - Think out loud. Like you are teaching it.
 - Take Note. 
 - Sleep is important. 
+
+#### Solving questions Routine:
+- Repeat the question in your own words
+- Check assumptions and edge cases
+- Use real examples
+- Think out loud
+- Brainstorm solutions and their time/space complexities
+- Write a working code in 20-30 minutes
+- Test edge cases (in your brain) line-by-line examples
+- Practice makes perfect!
 
 <img src="leetcode_pic.png" alt="leetcode contest progress" width="500" height="300">
 
