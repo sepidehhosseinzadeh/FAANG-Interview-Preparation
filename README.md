@@ -2,19 +2,21 @@
 
 ## FAANG Interview Coding Preparation
 ### Step 0 - Coding until you solve the questions in 45 min
-Look at the solution if you can't solve it in 30 mins.
-Weekly leetcode/topcoder contests, track progress, note the questions with link for later review.
+- Look at the solution if you can't solve it in 30 mins.
+- Weekly leetcode/topcoder contests, track progress, note the questions with link for later review.
+
 
 <img src="leetcode_pic.png" alt="leetcode contest progress" width="500" height="300">
 
 ### Step 1: Code and System Design:
 #### Coding Interview Problems: 
-https://www.educative.io/courses/coderust-hacking-the-coding-interview
-Do not buy educative. Search the questions on leetcode.
-I was not able to do most of them so please look at the answer and upsolve. This will give you a great base to solve other similar questions.
+- https://www.educative.io/courses/coderust-hacking-the-coding-interview
+- Do not buy educative. Search the questions on leetcode.
+- I was not able to do most of them so please look at the answer and upsolve. This will give you a great base to solve other similar questions.
+
+---
 
 1. Arrays
-
 - Implement Binary Search on a Sorted Array
 - Find Maximum in Sliding Window
 - Search a Rotated Array
@@ -27,8 +29,9 @@ I was not able to do most of them so please look at the answer and upsolve. This
 - Find Pair With Given Sum in an Array
 - Sort an Array Using Quicksort Algorithm
 
-2. Linked List
+---
 
+2. Linked List
 - Implementation of Linked List
 - Reverse a Singly Linked List
 - Remove Duplicates from a Linked List
@@ -45,6 +48,8 @@ I was not able to do most of them so please look at the answer and upsolve. This
 - Add Two Integers Represented by Linked Lists
 - Copy Linked List with Arbitrary Pointer
 
+---
+
 3. Math & Stats
 - Find kth Permutation
 - Integer Division Without Using * or /
@@ -57,6 +62,8 @@ I was not able to do most of them so please look at the answer and upsolve. This
 - Calculate Power of a Number
 - Calculate Square Root of a Number
 
+---
+
 4. Strings
 - Reverse Words in a Sentence
 - Remove Duplicates from a String
@@ -65,6 +72,8 @@ I was not able to do most of them so please look at the answer and upsolve. This
 - XML to Tree
 - Find all Palindrome Substrings
 - Regular Expression Matching in String
+
+---
 
 5. Trees
 - Implementation of Binary Tree
@@ -85,21 +94,29 @@ I was not able to do most of them so please look at the answer and upsolve. This
 - Delete Zero Sum Sub-Trees
 - Convert N-ary Tree to Binary Tree
 
+---
+
 6. Stacks and Queues
 - Implement Stack Using Queues
 - Implement Queue Using Stacks
 - Evaluate Arithmetic Expressions
+
+---
 
 7. Graphs
 - Clone a Directed Graph
 - Minimum Spanning Tree
 - Word Chaining
 
+---
+
 8. Back Tracking
 - Boggle
 - Print All Combinations of Balanced Braces
 - Solve N-Queens Problem
 - Find K-Sum Subsets
+
+---
 
 9. Dynamic Programming
 - Fibonacci Numbers
@@ -108,6 +125,8 @@ I was not able to do most of them so please look at the answer and upsolve. This
 - Find Combinations for Game Scoring
 - Coin Changing Problem
 - Levenshtein Distance
+
+---
 
 10. Miscellaneous
 - Sum of Three Values
@@ -137,6 +156,8 @@ I was not able to do most of them so please look at the answer and upsolve. This
 - Designing Uber backend
 - Design Ticketmaster
 
+---
+
 2. Glossary of System Design Basics
 - System Design Basics
 - Key Characteristics of Distributed Systems
@@ -153,8 +174,8 @@ I was not able to do most of them so please look at the answer and upsolve. This
 
 
 ### Step 2 - Teamblind List: 
-https://www.teamblind.com/article/New-Year-Gift---Curated-List-of-Top-75-LeetCode-Questions-to-Save-Your-Time-OaM1orEU
-In leetcode list format: https://leetcode.com/list/xoqag3yj/
+- https://www.teamblind.com/article/New-Year-Gift---Curated-List-of-Top-75-LeetCode-Questions-to-Save-Your-Time-OaM1orEU
+- In leetcode list format: https://leetcode.com/list/xoqag3yj/
 
 Array
 
@@ -283,13 +304,13 @@ Heap
 
 ---
 
-** More questions: ** 
+*More questions:* 
 https://seanprashad.com/leetcode-patterns/       
 https://www.youtube.com/channel/UC_mYaQAE6-71rjSN6CeCA-g 
 
 ### Step 3 - A week before the interview: 
-Company specific leetcode explore questions
-Company tagged leetcode discuss
-https://www.pramp.com/ everyday
+- Company specific leetcode explore questions
+- Company tagged leetcode discuss
+- https://www.pramp.com/ everyday
 
-Followed this for 3 months.
+* Followed this for 3 months.
