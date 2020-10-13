@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class serializeTree {
     private class TreeNode {
         int val;
