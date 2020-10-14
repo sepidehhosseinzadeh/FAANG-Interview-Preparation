@@ -157,6 +157,9 @@
 
 #### System Design: 
 
+* https://www.youtube.com/playlist?list=PLA8lYuzFlBqAy6dkZHj5VxUAaqr4vwrka
+* https://github.com/donnemartin/system-design-primer
+
 1. System Design Problems
 - System Design Interviews: A step by step guide
 - Designing a URL Shortening service like TinyURL
@@ -324,6 +327,7 @@ Heap
 ---
 
 *More questions:* 
+https://docs.google.com/spreadsheets/d/1KkCeOIBwUFfKrHGGZe_6EJRCIqaM6MJBo0uSIMSD9bs/edit#gid=782922309
 https://seanprashad.com/leetcode-patterns/       
 https://www.youtube.com/channel/UC_mYaQAE6-71rjSN6CeCA-g 
 
