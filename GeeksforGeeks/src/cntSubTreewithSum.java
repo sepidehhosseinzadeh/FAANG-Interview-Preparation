@@ -12,7 +12,7 @@ public class cntSubTreewithSum {
             left=right=null;
         }
     }
-    
+
     //HashMap<Integer, Integer> map;
     int cnt;
     int x;
