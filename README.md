@@ -157,6 +157,8 @@
 
 #### System Design: 
 
+* https://www.youtube.com/playlist?list=PLA8lYuzFlBqAy6dkZHj5VxUAaqr4vwrka
+
 1. System Design Problems
 - System Design Interviews: A step by step guide
 - Designing a URL Shortening service like TinyURL
