@@ -158,6 +158,7 @@
 #### System Design: 
 
 * https://www.youtube.com/playlist?list=PLA8lYuzFlBqAy6dkZHj5VxUAaqr4vwrka
+* https://github.com/donnemartin/system-design-primer
 
 1. System Design Problems
 - System Design Interviews: A step by step guide
