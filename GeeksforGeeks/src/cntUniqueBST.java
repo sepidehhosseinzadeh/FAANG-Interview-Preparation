@@ -28,13 +28,23 @@ public class cntUniqueBST {
 
         return memo[lb][ub] = cnt;
     }
+    static int countBST_v1(int n, int[] memo)
+    {
+        if(memo[n] != -1) return memo[n];
+
+        int cnt = 0;
+        for(int root = 1; root <= n; root++)
+            cnt += countBST_v1(root-1, memo) * countBST_v1(n-root, memo);
+
+        return memo[n] = cnt;
+    }
     static int countBSTDP(int N)
     {
         int[] dp = new int[N+1];
 
-        dp[0] = 1; dp[1] = 1;
+        dp[0] = 1;
 
-        for(int n = 2; n <= N; n++)
+        for(int n = 1; n <= N; n++)
             for(int root = 1; root <= n; root++)
                 dp[n] += dp[root-1] * dp[n-root]; //left * right
 
