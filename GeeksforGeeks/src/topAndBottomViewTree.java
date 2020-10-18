@@ -25,11 +25,30 @@ public class topAndBottomViewTree {
         }
     }
 
-    public static void main(String[] args)
-    {
-    }
     // function should print the topView of the binary tree
+    static TreeMap<Integer, int[]> m;
+    static void fillMap(Node root, int d, int l)
+    {
+        if(root == null) return;
+
+        if(m.get(d) == null)
+            m.put(d, new int[]{root.data, l});
+        else if(m.get(d)[1] > l)
+            m.put(d, new int[]{root.data, l});
+
+        fillMap(root.left, d - 1, l + 1);
+        fillMap(root.right, d + 1, l + 1);
+    }
     static void topView(Node root)
+    {
+        m = new TreeMap<>();
+        fillMap(root, 0, 0);
+
+        for (Map.Entry<Integer,int[]> entry : m.entrySet())
+            System.out.print(entry.getValue()[0] + " ");
+    }
+    // second approach
+    static void topView_v1(Node root)
     {
         if(root == null) return;
 
@@ -70,28 +89,6 @@ public class topAndBottomViewTree {
             System.out.print(topV.get(k)+" ");
     }
 
-    // Second approach
-    static TreeMap<Integer, int[]> m;
-    static void fillMap(Node root, int d, int l)
-    {
-        if(root == null) return;
-
-        if(m.get(d) == null)
-            m.put(d, new int[]{root.data, l});
-        else if(m.get(d)[1] > l)
-            m.put(d, new int[]{root.data, l});
-
-        fillMap(root.left, d - 1, l + 1);
-        fillMap(root.right, d + 1, l + 1);
-    }
-    static void topView_v1(Node root)
-    {
-        m = new TreeMap<>();
-        fillMap(root, 0, 0);
-
-        for (Map.Entry<Integer,int[]> entry : m.entrySet())
-            System.out.print(entry.getValue()[0] + " ");
-    }
     static void bottomView(Node root)
     {
         if (root == null)
