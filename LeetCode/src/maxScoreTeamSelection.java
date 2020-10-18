@@ -11,10 +11,16 @@ public class maxScoreTeamSelection {
         }
 
         @Override
+        // THIS IS FOR MEMO APPROCH
+        // public int compareTo(node o)
+        // {
+        //     return score != o.score ? score - o.score : age - o.age;
+        // }
+
+        // THIS IS FOR DP APPROCH
         public int compareTo(node o)
         {
-            if (this.age == o.age) return o.score - this.score;
-            return this.age - o.age;
+            return age != o.age ? age - o.age : score - o.score;
         }
     }
 
@@ -25,28 +31,45 @@ public class maxScoreTeamSelection {
             arr[i] = new node(scores[i], ages[i]);
         Arrays.sort(arr);
 
-        int maxS = 0;
-        for (int j = 0; j < n; j++) {
-            int prevS = arr[j].score, prevAge = arr[j].age;
-            int s = arr[j].score;
-            for (int i = j + 1; i < n; ) {
-                int curMaxS = arr[i].score;
-                while (i < n && arr[i].age == prevAge && arr[i].score > prevS) {
-                    s += arr[i].score;
-                    curMaxS = Math.max(curMaxS, arr[i].score);
-                    i++;
-                }
-                if (i < n && arr[i].age != prevAge) {
-                    s += arr[i].score;
-                    curMaxS = arr[i].score;
-                    prevAge = arr[i].age;
-                    i++;
-                }
-                prevS = curMaxS;
-            }
-            maxS = Math.max(maxS, s);
-        }
+        int[][] memo = new int[n][1001];
+        for (int[] a : memo)
+            Arrays.fill(a, -1);
 
+        //return bestScore(0, 0, arr, memo);
+        return bestScoreDP(arr);
+    }
+
+    int bestScore(int at, int prevmaxAge, node[] arr, int[][] memo)
+    {
+        if (at == arr.length) return 0;
+        if (memo[at][prevmaxAge] != -1) return memo[at][prevmaxAge];
+
+        int wAt = 0, woAt = 0;
+        if (arr[at].age >= prevmaxAge)
+            wAt = arr[at].score + bestScore(at + 1, arr[at].age, arr, memo);
+
+        woAt = bestScore(at + 1, prevmaxAge, arr, memo);
+
+        return memo[at][prevmaxAge] = Math.max(wAt, woAt);
+    }
+
+    int bestScoreDP(node[] arr)
+    {
+        int n = arr.length;
+        Arrays.sort(arr);
+
+        int[] bestScore = new int[n];
+
+        // max sum increasing subsequence
+        int maxS = 0;
+        for (int i = 0; i < n; i++) {
+            bestScore[i] = arr[i].score;
+            for (int j = 0; j < i; j++)
+                if (arr[j].score <= arr[i].score)
+                    bestScore[i] = Math.max(bestScore[i],
+                            bestScore[j] + arr[i].score);
+            maxS = Math.max(maxS, bestScore[i]);
+        }
         return maxS;
     }
 }
