@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class nodesAtDisKFromAnode {
+public class disKfromAnode {
     static class TreeNode {
         int val;
         TreeNode left;
