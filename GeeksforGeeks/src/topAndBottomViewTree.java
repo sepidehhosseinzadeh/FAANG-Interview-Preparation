@@ -11,11 +11,12 @@ Top View of Binary Tree: https://www.geeksforgeeks.org/print-nodes-top-view-bina
 
 Top view will be: 4 2 1 3 7
  */
-public class topViewTree {
+public class topAndBottomViewTree {
     static class Node
     {
         int data;
         Node left, right;
+        int hd;
 
         Node(int item)
         {
@@ -90,6 +91,46 @@ public class topViewTree {
 
         for (Map.Entry<Integer,int[]> entry : m.entrySet())
             System.out.print(entry.getValue()[0] + " ");
+    }
+    static void bottomView(Node root)
+    {
+        if (root == null)
+            return;
+
+        int hd = 0;
+        Map<Integer, Integer> map = new TreeMap<>();
+        Queue<Node> queue = new LinkedList<Node>();
+
+        root.hd = hd;
+        queue.add(root);
+
+        while (!queue.isEmpty())
+        {
+            Node temp = queue.remove();
+            hd = temp.hd;
+
+            // find a node having same horizontal distance -> replace
+            map.put(hd, temp.data);
+
+            if (temp.left != null)
+            {
+                temp.left.hd = hd-1;
+                queue.add(temp.left);
+            }
+            if (temp.right != null)
+            {
+                temp.right.hd = hd+1;
+                queue.add(temp.right);
+            }
+        }
+
+        Set<Map.Entry<Integer, Integer>> set = map.entrySet();
+        Iterator<Map.Entry<Integer, Integer>> iterator = set.iterator();
+        while (iterator.hasNext())
+        {
+            Map.Entry<Integer, Integer> me = iterator.next();
+            System.out.print(me.getValue()+" ");
+        }
     }
 }
 
