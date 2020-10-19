@@ -37,7 +37,7 @@ public class minDisNodesTree {
             left = right = null;
         }
     }
-    static int findDist(Node root, int a, int b) {
+    static int findDist_v0(Node root, int a, int b) {
         if (root == null) return -1;
         neigh = new ArrayList[(int) 1e5 + 1];
         for(int i = 0; i< 1e5+1;neigh[i]=new ArrayList<>(),i++);
@@ -82,4 +82,42 @@ public class minDisNodesTree {
 
         return -1;
     }
+
+    // Second approach: using lowest common ancestor (lca)
+    static int findDist(Node root, int a, int b)
+    {
+        Node lca = lca(root, a, b);
+        int da = dist(lca, a);
+        int db = dist(lca, b);
+        if(da < 0 || db < 0) return -1;
+        return da+db;
+    }
+    static Node lca(Node root, int a, int b)
+    {
+        if(root == null)    return null;
+        if(root.data == a)   return root;
+        if(root.data == b)   return root;
+
+        Node left = lca(root.left, a, b);
+        Node right = lca(root.right, a, b);
+
+        if(left != null && right != null)
+            return root;
+
+        return left != null ? left : right;
+    }
+    static int dist(Node root, int val)
+    {
+        if(root == null) return Integer.MIN_VALUE;
+        if(root.data == val) return 0;
+
+        int dl = 1+dist(root.left, val);
+        if(dl >= 0) return dl;
+
+        int dr = 1+dist(root.right, val);
+        if(dr >= 0) return dr;
+
+        return Integer.MIN_VALUE;
+    }
+
 }
