@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/CodeProcessor.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ExampleBuilder.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/FileEdit.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
