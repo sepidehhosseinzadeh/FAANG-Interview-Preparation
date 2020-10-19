@@ -1,57 +1,85 @@
 import java.util.*;
 
 public class minDisNodesTree {
+    static ArrayList<Integer>[] neigh;
     public static void main(String[] args)
     {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+        root.right.left.right = new Node(8);
+        System.out.println("Dist(4, 5) = "
+                + findDist(root, 4, 5));
+
+        System.out.println("Dist(4, 6) = "
+                + findDist(root, 4, 6));
+
+        System.out.println("Dist(3, 4) = "
+                + findDist(root, 3, 4));
+
+        System.out.println("Dist(2, 4) = "
+                + findDist(root, 2, 4));
+
+        System.out.println("Dist(8, 5) = "
+                + findDist(root, 8, 5));
+
     }
-}
-class GfG {
-    static class Node
-    {
+    static class Node {
         int data;
         Node left, right;
-        Node(int item)    {
+
+        Node(int item) {
             data = item;
             left = right = null;
         }
     }
-    HashMap<Node, Node> par;
-    GfG() {par = new HashMap<>();}
-    int findDist(Node root, int a, int b) {
-        if(root == null) return -1;
-        if(a == b) return 0;
+    static int findDist(Node root, int a, int b) {
+        if (root == null) return -1;
+        neigh = new ArrayList[(int) 1e5 + 1];
+        for(int i = 0; i< 1e5+1;neigh[i]=new ArrayList<>(),i++);
+
         dfs(root, null);
 
-        Queue<Node> q = new LinkedList<>();
-        ArrayList<Node> vis = new ArrayList<>();
-        q.add(root);
-
-        int d = -1;
-        while(!q.isEmpty())
-        {
-            int n = q.size();
-            if(d >= 0) d++;
-            for(int i = 0; i < n; i++)
-            {
-                Node at = q.remove();
-                if(vis.contains(at)) continue;
-
-                if(at.data == a || at.data == b) d = 0;
-                if((at.data == a || at.data == b) && d > 0) return d;
-
-                if(at.left != null) q.add(at.left);
-                if(at.right != null) q.add(at.right);
-                if(par.containsKey(at)) q.add(par.get(at));
-                if(d >= 0) vis.add(at);
-            }
-        }
-        return -1;
+        return bfs(a, b);
     }
-    void dfs(Node at, Node p)
+    static void dfs(Node at, Node p)
     {
-        if(at == null) return;
-        if(p != null) par.put(at, p);
+        if (at == null) return;
+
+        if (p != null) {
+            neigh[at.data].add(p.data);
+            neigh[p.data].add(at.data);
+        }
+
         dfs(at.left, at);
         dfs(at.right, at);
+    }
+    static int bfs(int a, int b)
+    {
+        Queue<Integer> q = new LinkedList<>();
+        ArrayList<Integer> vis = new ArrayList<>();
+        q.add(a);
+        vis.add(a);
+
+        for (int d = 0; d < 1e4 + 1 && !q.isEmpty(); d++) {
+            int n = q.size();
+            for (int i = 0; i < n; i++) {
+                int at = q.remove();
+
+                if (at == b) return d;
+
+                for (int to : neigh[at])
+                    if (!vis.contains(to)) {
+                        vis.add(to);
+                        q.add(to);
+                    }
+            }
+        }
+
+        return -1;
     }
 }
