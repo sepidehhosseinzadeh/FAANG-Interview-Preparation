@@ -30,7 +30,7 @@ public class relativeSort {
         for (int i = 1; i < 1e6 + 1; i++)
             while (cnt[i]-- > 0) System.out.print(i + " ");
     }
-    
+
     // What if this constraint 0 <= arr1[i], arr2[i] <= 1000 doesn't exist
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
         TreeMap<Integer, Integer> map = new TreeMap<>();
