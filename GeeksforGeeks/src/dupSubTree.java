@@ -15,8 +15,8 @@ class dupSubTree
             left = right = null;
         }
     }
-    static HashMap<String, Integer> nsubtree = new HashMap<>();
 
+    static HashMap<String, Integer> nsubtree = new HashMap<>();
     public static boolean dupSub(Node root)
     {
         nsubtree.clear();
@@ -30,17 +30,10 @@ class dupSubTree
 
     public static String preorder(Node root)
     {
-        String serial = "";
-        if(root == null)
-        {
-            serial += "N";
-            return serial;
-        }
 
-        serial += root.data;
-        serial += preorder(root.left);
-        serial += preorder(root.right);
+        if(root == null) return "#";
 
+        String serial = root.data + preorder(root.left) + preorder(root.right);
         nsubtree.put(serial, nsubtree.getOrDefault(serial,0)+1);
         return serial;
     }
