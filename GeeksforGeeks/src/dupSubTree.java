@@ -33,7 +33,8 @@ class dupSubTree
 
         if(root == null) return "#";
 
-        String serial = root.data + preorder(root.left) + preorder(root.right);
+        String serial = root.data + "," +
+                preorder(root.left) + "," + preorder(root.right);
         nsubtree.put(serial, nsubtree.getOrDefault(serial,0)+1);
         return serial;
     }
