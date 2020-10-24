@@ -1,15 +1,15 @@
 import java.util.*;
 
-public class maxDiffAncestorChildNodes {
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
 
-        TreeNode(int val) {
-            this.val = val;
-        }
+    TreeNode(int val) {
+        this.val = val;
     }
+}
+public class maxDiffAncestorChildNodes {
 
     public int maxAncestorDiff(TreeNode root) {
         return maxDiff(root, -1, 100001);
