@@ -34,4 +34,34 @@ public class minMaxCostDP {
                 dfs(tx, ty, h, vis, Math.max(curD, dis), d);
         }
     }
+
+    int dijkstra(int[][] h)
+    {
+        int n = h.length, m = h[0].length;
+        int[][] dist = new int[n][m];
+        for (int[] i: dist) Arrays.fill(i, Integer.MAX_VALUE);
+
+        PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+
+        q.offer(new int[]{0, 0, 0}); // distance, row, col
+
+        while (!q.isEmpty()) {
+            int[] at = q.poll();
+            int atd = at[0], atx = at[1], aty = at[2];
+
+            if (atx == n - 1 && aty == m - 1) return atd;
+
+            for (int i = 0; i < 4; i++) {
+                int tox = atx + dx[i], toy = aty + dy[i];
+                if (tox >= 0 && tox < n && toy >= 0 && toy < m) {
+                    int tod = Math.max(atd, Math.abs(h[tox][toy] - h[atx][aty]));
+                    if (dist[tox][toy] > tod) {
+                        dist[tox][toy] = tod;
+                        q.offer(new int[]{tod, tox, toy});
+                    }
+                }
+            }
+        }
+        return 0;
+    }
 }
