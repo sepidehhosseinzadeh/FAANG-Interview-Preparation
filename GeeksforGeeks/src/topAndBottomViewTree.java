@@ -11,20 +11,19 @@ Top View of Binary Tree: https://www.geeksforgeeks.org/print-nodes-top-view-bina
 
 Top view will be: 4 2 1 3 7
  */
-public class topAndBottomViewTree {
-    static class Node
+class Node
+{
+    int data;
+    Node left, right;
+    int hd;
+
+    Node(int item)
     {
-        int data;
-        Node left, right;
-        int hd;
-
-        Node(int item)
-        {
-            data = item;
-            left = right = null;
-        }
+        data = item;
+        left = right = null;
     }
-
+}
+public class topAndBottomViewTree {
     // function should print the topView of the binary tree
     static TreeMap<Integer, int[]> m;
     static void fillMap(Node root, int d, int l)
