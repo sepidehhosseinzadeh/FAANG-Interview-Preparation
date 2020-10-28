@@ -9,7 +9,7 @@ public class arrayPairsDivK {
     // Given 2 nums 'a' and 'b':
     //If a % k == x and b % k == k - x :
     //then (a + b) is divisible by k
-    
+
     //Proof :
     //a % k == x
     //b % k == k - x
