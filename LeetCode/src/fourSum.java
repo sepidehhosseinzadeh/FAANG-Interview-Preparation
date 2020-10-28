@@ -1,11 +1,51 @@
 import java.util.*;
 
-public class FourSum {
+public class fourSum {
     public static void main(String[] args)
     {
-
+        int[] num = new int[] {1,0,-1,0,-2,2};
+        System.out.println(fourSum(num,0));
     }
     public static List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+
+        Arrays.sort(nums);
+
+        for(int k = 0; k < nums.length; k++)
+        {
+            for(int p = k+1; p < nums.length; p++)
+            {
+                int a = nums[k]+nums[p];
+                int s = target-a;
+
+                int i = 0, j = nums.length-1;
+                while(i < j)
+                {
+                    if(i == k || i == p) i++;
+                    if(i >= j) break;
+                    if(j == k || j == p) j--;
+                    if(j <= i) break;
+
+                    if(nums[i]+nums[j] == s)
+                    {
+                        List<Integer> list = new ArrayList<>();
+                        list.add(nums[k]);
+                        list.add(nums[p]);
+                        list.add(nums[i]);
+                        list.add(nums[j]);
+                        res.add(list);
+                    }
+                    else if(nums[i]+nums[j] > s) j--;
+                    else i++;
+                }
+            }
+        }
+
+        return res;
+    }
+
+    // recursive solution
+    public static List<List<Integer>> fourSum_v1(int[] nums, int target) {
         Arrays.sort(nums);
         return kSum(nums, target, 0, 4);
     }
