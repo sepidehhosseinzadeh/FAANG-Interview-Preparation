@@ -96,15 +96,4 @@ public class merge2BSTs {
         inorder(at.right, res);
     }
 
-    static class Node {
-        int data;
-        Node left, right;
-
-        public Node(int d)
-        {
-            data = d;
-            left = right = null;
-        }
-    }
-
 }
