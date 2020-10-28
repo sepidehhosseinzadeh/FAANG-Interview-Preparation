@@ -1,35 +1,28 @@
 public class maxBipartiteMatching {
-    // A DFS based recursive function
-    // that returns true if a matching
-    // for vertex u is possible
-    boolean bpm(boolean bpGraph[][], int u,int N,
-             boolean seen[], int matchR[])
-    {
-        // Try every job one by one
-        for (int v = 0; v < N; v++)
-        {
-            // If applicant u is interested in
-            // job v and v is not visited
-            if (bpGraph[u][v] && !seen[v])
-            {
-                // Mark v as visited
-                seen[v] = true;
+    public boolean canArrange(int[] nums, int k) {
+        int[] pair = new int[nums.length];
 
-                // If job 'v' is not assigned to an
-                // applicant OR previously assigned
-                // applicant for job v (which is matchR[v])
-                // has an alternate job available.
-                // Since v is marked as visited in
-                // the above line, matchR[v] in the following
-                // recursive call will not get job 'v' again
-                if (matchR[v] < 0 || bpm(bpGraph, matchR[v],
-                        N, seen, matchR))
-                {
-                    matchR[v] = u;
+        int cnt = 0;
+        for (int i = 0; i < nums.length; i++)
+            if (match(i, nums, pair, k, new boolean[nums.length]))
+                // every time a new array of visited, to prevent loop, but NOT new assignment -1!,
+                // we are tying to find a best match for each i
+                // (a math that other previous matches are preserved)
+                cnt++;
+
+        return cnt == nums.length;
+    }
+
+    boolean match(int at, int[] nums, int[] pair, int k, boolean[] vis)
+    {
+        for (int to = 0; to < nums.length; to++)
+            if (!vis[to] && at != to && (nums[at] + nums[to]) % k == 0) {
+                vis[to] = true;
+                if (pair[to] == -1 || match(pair[to], nums, pair, k, vis)) {
+                    pair[to] = at;
                     return true;
                 }
             }
-        }
         return false;
     }
 }
