@@ -1,4 +1,7 @@
+import java.util.*;
+
 public class maxBipartiteMatching {
+    //  O(NM^2)
     public boolean canArrange(int[] nums, int k) {
         int[] pair = new int[nums.length];
 
