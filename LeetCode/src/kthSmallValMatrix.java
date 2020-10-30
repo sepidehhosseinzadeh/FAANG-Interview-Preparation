@@ -29,18 +29,22 @@ public class kthSmallValMatrix {
 
     //O(log(M)*(n+m)) M is max-min val
     public int kthSmallest_v1(int[][] matrix, int k) {
-        int lo = matrix[0][0], hi = matrix[matrix.length - 1][matrix[0].length - 1] + 1;//[lo, hi)
-        while(lo < hi) {
-            int mid = lo + (hi - lo) / 2;
-            int count = 0,  j = matrix[0].length - 1;
+        int n = matrix.length, m = matrix[0].length;
+        int lb = matrix[0][0], ub = matrix[n-1][m-1];
+        while(lb < ub)
+        {
+            int mid = lb+(ub-lb)/2;
+            int cnt = 0;
+            int j = m-1;
             // O(n+m)
-            for(int i = 0; i < matrix.length; i++) {
+            for(int i = 0; i < n; i++)
+            {
                 while(j >= 0 && matrix[i][j] > mid) j--;
-                count += (j + 1);
+                cnt += j+1;
             }
-            if(count < k) lo = mid + 1;
-            else hi = mid;
+            if(cnt < k) lb = mid+1;
+            else ub = mid;
         }
-        return lo;
+        return lb;
     }
 }
