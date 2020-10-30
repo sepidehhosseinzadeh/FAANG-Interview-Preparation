@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class kthSmallinBst {
+public class kthSmallNodeBst {
     // O(N) best, O(N^2) worst
     int kthSmallest(TreeNode root, int k) {
         int count = countNodes(root.left);
