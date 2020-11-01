@@ -6,7 +6,7 @@ public class cntSubstring {
         System.out.print(countSubstrings("abe","bbc"));
     }
 
-    public static int countSubstrings(String ss, String t) {
+    static int countSubstrings(String ss, String t) {
 
         HashMap<String, Integer> subs = new HashMap<>();
         for (int i = 0; i < t.length(); i++)
@@ -24,15 +24,29 @@ public class cntSubstring {
                         if (c != prev)
                         {
                             s.setCharAt(k, (char) (c + 'a'));
-                            if (subs.containsKey(s.toString())) {
+                            if (subs.containsKey(s.toString()))
                                 cnt += subs.get(s.toString());
-                                //break;
-                            }
-
                         }
                 }
 
         return cnt;
+    }
+    static int countSubstrings_v1(String ss, String tt)
+    {
+        char[] s = ss.toCharArray();
+        char[] t = tt.toCharArray();
+
+        int ans = 0;
+        for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < t.length; j++) {
+                int cnt = 0;
+                for (int k = 0; i + k < s.length && j + k < t.length; k++) {
+                    if (s[i + k] != t[j + k]) cnt++;
+                    if (cnt == 1) ans++;
+                }
+            }
+        }
+        return ans;
     }
 }
 
