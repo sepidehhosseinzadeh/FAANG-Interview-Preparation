@@ -29,6 +29,7 @@
 
 ### Step 1: Code and System Design:
 #### Coding Interview Problems: 
+- https://leetcode.com/discuss/interview-question/448285/List-of-questions-sorted-by-common-patterns.
 - https://www.lintcode.com/problem/?tag=google
 - https://www.educative.io/courses/coderust-hacking-the-coding-interview
 - Do not buy educative. Search the questions on leetcode.
