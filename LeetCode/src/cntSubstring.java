@@ -30,7 +30,7 @@ public class cntSubstring {
         return cnt;
     }
 
-    // O(N^3)
+    // O(NMK)
     public static int countSubstrings_v1(String s, String t) {
         int res = 0;
         for (int i = 0; i < s.length(); i++)
@@ -45,8 +45,8 @@ public class cntSubstring {
         return res;
     }
 
-    // O(N^2)
-    public static int countSubstrings(String s, String t) {
+    // O(NM)
+    public static int countSubstrings_v2(String s, String t) {
         var L = new int[s.length() + 1][t.length() + 1];
         var R = new int[s.length() + 1][t.length() + 1];
 
@@ -68,5 +68,50 @@ public class cntSubstring {
 
         return res;
 
+    }
+
+    // O(NMK)
+    public int countSubstrings_v3(String s, String t) {
+        int res = 0;
+        for (int i = 0; i < s.length(); ++i)
+            res += helper_v0(s, t, i, 0);
+        for (int j = 1; j < t.length(); ++j)
+            res += helper_v0(s, t, 0, j);
+        return res;
+    }
+    public int helper_v0(String s, String t, int i, int j) {
+        int res = 0;
+        for (int n = s.length(), m = t.length(); i < n && j < m; ++i, ++j) {
+            int diff = 0;
+            for (int k = 0; i + k < s.length() && j + k < t.length(); k++) {
+                if (s.charAt(i + k) != t.charAt(j + k)) diff++;
+                if (diff == 1) res++;
+                if (diff > 1) break;
+            }
+        }
+        return res;
+    }
+    
+    // O(NM)
+    public int countSubstrings(String s, String t) {
+        int res = 0;
+        for (int i = 0; i < s.length(); ++i)
+            res += helper(s, t, i, 0);
+        for (int j = 1; j < t.length(); ++j)
+            res += helper(s, t, 0, j);
+        return res;
+    }
+
+    public int helper(String s, String t, int i, int j) {
+        int res = 0, pre = 0, cur = 0;
+        for (int n = s.length(), m = t.length(); i < n && j < m; ++i, ++j) {
+            cur++;
+            if (s.charAt(i) != t.charAt(j)) {
+                pre = cur;
+                cur = 0;
+            }
+            res += pre;
+        }
+        return res;
     }
 }
