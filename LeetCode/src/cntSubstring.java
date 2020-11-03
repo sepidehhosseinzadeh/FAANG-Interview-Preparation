@@ -91,9 +91,9 @@ public class cntSubstring {
         }
         return res;
     }
-    
+
     // O(NM)
-    public int countSubstrings(String s, String t) {
+    public static int countSubstrings(String s, String t) {
         int res = 0;
         for (int i = 0; i < s.length(); ++i)
             res += helper(s, t, i, 0);
@@ -102,7 +102,7 @@ public class cntSubstring {
         return res;
     }
 
-    public int helper(String s, String t, int i, int j) {
+    public static int helper(String s, String t, int i, int j) {
         int res = 0, pre = 0, cur = 0;
         for (int n = s.length(), m = t.length(); i < n && j < m; ++i, ++j) {
             cur++;
