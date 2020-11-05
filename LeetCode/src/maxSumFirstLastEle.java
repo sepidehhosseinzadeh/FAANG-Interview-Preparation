@@ -36,11 +36,14 @@ public class maxSumFirstLastEle {
                 else
                     dp[i][i + l] = Math.min(nums[i] +
                             dp[i + 1][i + l], nums[i + l] + dp[i][i + l - 1]);
+                    // MAX is WRONG!!!!!!?????
+                    // 0 1 |2 3 4| 5 6 -> maximize 0 1 ... 5 6  OR  minimize 2 3 4
             }
         }
+        int S = 0; for(int s : nums) S+= s;
         int res = Integer.MIN_VALUE;
         for (int i = 0; n-K+i < n; i++)
-            res = Math.max(res, dp[i][n-K+i]);
+            res = Math.max(res, S-dp[i][n-K+i-1]);
 
         return res;
     }
@@ -70,6 +73,26 @@ public class maxSumFirstLastEle {
         q.offerLast(last);
     }
 
+    // Problem Translation: Find the min subarray sum of length len(cardPoints) - k
+    // Or, Find the max subarray sum of length k
+    private static int maxScore(int[] nums, int K) {
+        int n = nums.length, maxS = 0;
+        int totS = 0; for(int i:nums) totS += i;
+
+        int curS = 0;
+        for(int i = n-K; i < n; i++) curS += nums[i];
+        maxS = Math.max(maxS, curS);
+
+        int i = 0, j = n-K;
+        while(i < K && j < n)
+        {
+            curS += nums[i++];
+            curS -= nums[j++];
+            maxS = Math.max(maxS, curS);
+        }
+
+        return maxS;
+    }
     /*
     // Memo
     def largestSumFromEnd(nums, multiply, K):
