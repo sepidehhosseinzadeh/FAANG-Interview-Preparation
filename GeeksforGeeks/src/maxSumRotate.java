@@ -20,13 +20,9 @@ public class maxSumRotate {
         for (int i = 1; i < n; i++)
         {
             // Compute next value using previous
-            int next_val = curr_val - (cum_sum -
-                    arr[i-1]) + arr[i-1] *
-                    (n-1);
+            curr_val = curr_val - (cum_sum - arr[i-1]) + arr[i-1] * (n-1);
 
-            curr_val = next_val;
-
-            res = Math.max(res, next_val);
+            res = Math.max(res, curr_val);
         }
 
         return res;
