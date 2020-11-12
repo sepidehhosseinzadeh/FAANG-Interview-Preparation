@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class buySellStockWithCoolDown {
+public class stockBuySellWithCoolDown {
     public static void main(String[] args)
     {
         System.out.print(maxProfit_v2(new int[]{1, 2, 3, 0, 2}));
