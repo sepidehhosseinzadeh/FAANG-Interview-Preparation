@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class buySellStock {
+public class stockBuySellAtMost1 {
     // best time to buy and sell, at most one transaction
     // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
     public int maxProfit(int[] prices) {
