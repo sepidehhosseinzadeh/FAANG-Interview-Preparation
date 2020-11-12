@@ -8,6 +8,7 @@ public class buySellStockWithCoolDown {
     public static int maxProfit(int[] prices) {
         return maxProfit(0, prices);
     }
+    // O(n^3) 
     static int maxProfit(int at, int[] prices)
     {
         if(at >= prices.length) return 0;
@@ -21,4 +22,6 @@ public class buySellStockWithCoolDown {
                 }
         return maxProf;
     }
+
+
 }
