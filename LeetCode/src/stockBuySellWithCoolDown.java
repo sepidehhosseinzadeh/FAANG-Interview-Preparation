@@ -36,7 +36,7 @@ public class stockBuySellWithCoolDown {
 
         for(int i = 1; i < n; i++) { // sell
             maxProf[i] = maxProf[i-1]; // don't sell at i
-            for(int j = 0; j < i; j++) // buy
+            for(int j = 0; j < i; j++) // buy at j < i. j-1 must cooldown (j-1 is not buy/sell)
                 maxProf[i] = Math.max(maxProf[i], prices[i]-prices[j]+(j>1?maxProf[j-2]:0));
         }
         return maxProf[n-1];
