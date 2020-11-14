@@ -1,6 +1,9 @@
 <img src="github_pic.png" alt="github progress" width="600" height="200">
 
 ## FAANG Interview Coding Preparation
+
+https://engineerseekingfire.com/how-to-prepare-for-software-engineering-interviews/
+
 ### Step 0 - Coding until you solve the questions in 45 min
 - Look at the solution if you can't solve it in 30 mins.
 - Weekly leetcode/topcoder contests, track progress, note the questions with link for later review.
@@ -29,8 +32,6 @@
 
 ### Step 1: Code and System Design:
 #### Coding Interview Problems: 
-- https://leetcode.com/discuss/interview-question/448285/List-of-questions-sorted-by-common-patterns.
-- https://www.lintcode.com/problem/?tag=google
 - https://www.educative.io/courses/coderust-hacking-the-coding-interview
 - Do not buy educative. Search the questions on leetcode.
 - I was not able to do most of them so please look at the answer and upsolve. This will give you a great base to solve other similar questions.
