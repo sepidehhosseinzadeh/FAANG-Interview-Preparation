@@ -124,7 +124,7 @@ public class distributeNumbers {
         return res;
     }
 
-    // DP
+    // DP: O(n*4^m) -> for on subsets of mask and fill them first -> O(n*3^m)
     public boolean canDistribute(int[] nums, int[] quantity) {
         var map = new HashMap<Integer, Integer>();
         for (int i : nums) map.put(i, map.getOrDefault(i, 0) + 1);
