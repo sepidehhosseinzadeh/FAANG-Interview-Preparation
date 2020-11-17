@@ -125,5 +125,32 @@ public class distributeNumbers {
     }
 
     // DP
-    
+    public boolean canDistribute(int[] nums, int[] quantity) {
+        var map = new HashMap<Integer, Integer>();
+        for (int i : nums) map.put(i, map.getOrDefault(i, 0) + 1);
+
+        int v = 0;
+        int[] cnt = new int[map.size()];
+        for (int i : map.values())
+            cnt[v++] = i;
+
+        int n = map.size(), m = quantity.length;
+        int[] required = new int[1<<m];
+        for(int i = 0; i < 1<<m; i++)
+            for(int j = 0; j < m; j++)
+                if((1<<j & i) != 0)
+                    required[i] += quantity[j];
+
+        boolean[][] dp = new boolean[n+1][1<<m];
+        dp[0][0] = true;
+        for(int i = 0; i < n; i++)
+            for(int j = (1<<m)-1; j >= 0; j--)
+            {
+                dp[i+1][j] |= dp[i][j]; // skip i
+                for(int k = j; k > 0; k=((k-1)&j))
+                    if(required[k] <= cnt[i] && dp[i][j^k])
+                        dp[i+1][j] = true;
+            }
+        return dp[n][(1<<m)-1];
+    }
 }
