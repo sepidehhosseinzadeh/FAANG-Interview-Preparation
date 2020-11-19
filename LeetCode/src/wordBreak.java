@@ -12,6 +12,13 @@ class wordBreak {
         //return wordBreak(0, s, dic);
         return wordBreakDP(s,dic);
     }
+    /*
+    T(N) = T(N-1) + T(N-2) + ... + T(0)
+    T(N-1) = T(N-2) + ... + T(0)
+    T(N) - T(N-1) = T(N-1)
+    T(N) = 2*T(N-1)
+    O(2^N) * O(N^2)
+     */
     boolean wordBreak(int at, String s, HashSet<String> dic)
     {
         if(at >= s.length()) return true;
