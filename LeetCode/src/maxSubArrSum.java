@@ -42,7 +42,8 @@ public class maxSubArrSum {
         val r = maxSubArr(mid + 1, rb, nums);
 
         val v = new val();
-        v.lmax = Math.max(l.lmax, l.sum + r.lmax); // l.lmax [--->  ] left vector's lmax  OR   l.sum+r.lmax [-----]-->  left vector's sum+right vector's lmax
+        v.lmax = Math.max(l.lmax, l.sum + r.lmax); // l.lmax [--->  ] left vector's lmax  OR
+        // l.sum+r.lmax [-----]-->  left vector's sum+right vector's lmax
 
         v.rmax = Math.max(r.rmax, r.sum + l.rmax);
 
