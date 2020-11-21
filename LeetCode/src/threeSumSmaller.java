@@ -21,7 +21,7 @@ public class threeSumSmaller {
 
         return res;
     }
-    
+
     public static int threeSumSmaller(int[] nums, int target) {
         int n = nums.length;
         int res = 0;
