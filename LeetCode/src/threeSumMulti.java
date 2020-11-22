@@ -61,4 +61,43 @@ public class threeSumMulti {
         }
         return res;
     }
+
+    // knapsack!!!!
+    // dp[i][j][k] represents number of combinations using k numbers within A[0] ... A[i] with the sum of j.
+    //Then dp[n][target][3] is the result. O(n * target)
+    public int threeSumMulti_v3(int[] A, int target) {
+        int n = A.length, M = (int)1e9 + 7;
+        int[][][] dp = new int[n + 1][target + 1][4];
+        for (int i = 0; i <= n; i++) {
+            dp[i][0][0] = 1;
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= target; j++) {
+                for (int k = 1; k <= 3; k++) {
+                    dp[i + 1][j][k] = dp[i][j][k];
+                    dp[i + 1][j][k] %= M;
+                    if (j >= A[i]) {
+                        dp[i + 1][j][k] += dp[i][j - A[i]][k - 1];
+                        dp[i + 1][j][k] %= M;
+                    }
+                }
+            }
+        }
+        return dp[n][target][3];
+    }
+    // O(target) space
+    public int threeSumMulti_v3_op(int[] A, int target) {
+        int n = A.length, M = (int)1e9 + 7;
+        int[][] dp = new int[target + 1][4];
+        dp[0][0] = 1;
+        for (int i = 0; i < n; i++) {
+            for (int j = target; j >= A[i]; j--) {
+                for (int k = 3; k >= 1; k--) {
+                    dp[j][k] += dp[j - A[i]][k - 1];
+                    dp[j][k] %= M;
+                }
+            }
+        }
+        return dp[target][3];
+    }
 }
