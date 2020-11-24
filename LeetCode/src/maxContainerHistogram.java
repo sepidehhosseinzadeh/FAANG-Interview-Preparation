@@ -1,10 +1,22 @@
 import java.util.*;
 
 public class maxContainerHistogram {
+    public int maxArea_v0(int[] h) {
+        int n = h.length;
+        int maxArea = 0;
+        int i = 0, j = n-1;
+        while(i < j)
+        {
+            maxArea = Math.max(maxArea, (j-i)*Math.min(h[i],h[j]));
+            if(h[i] > h[j]) j--;
+            else i++;
+        }
+        return maxArea;
+    }
     // Container With Most Water:
-        // Because the length is always decreasing
-        // we only need to consider a pair if its height
-        // is greater than any pair's height we've used so far
+    // Because the length is always decreasing
+    // we only need to consider a pair if its height
+    // is greater than any pair's height we've used so far
     public int maxArea(int[] h) {
         int n = h.length;
         int maxArea = 0;
