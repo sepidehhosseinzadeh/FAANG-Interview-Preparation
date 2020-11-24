@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class sumWOsumOp {
+public class bitSum {
     // XOR is acting as sum, and & << is passing the carry to the left bit.
     // Repeat until no carry left
     public int getSum_(int a, int b) {
