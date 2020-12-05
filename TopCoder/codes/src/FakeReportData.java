@@ -5,51 +5,32 @@ public class FakeReportData
     The first digits of all our integers must be distinct.
     The last digits of all our integers must be distinct.
     Within each integer the digits must be distinct.
-     */
+
+    Answer: just a simple consecutive cyclic digits!!!!!
+    1234567, 2345678, 3456789, 4567890, 5678901,...*/
+
+    // backtrack wrong!!!!!!
     public int[] generate(int N, int D)
     {
-        boolean[][][] num = new boolean[N][D][10];
-        boolean[][] within = new boolean[N][10];
-        int[] res = new int[N];
-
-        for(int i = 0; i < D; i++) {
-            int len = 0;
-            for (int j = 0; j < N; j++)
-                for (int k = 0; k < 10; k++) {
-                    if (!num[j][i][k] && within[j][k]) {
-                        num[j][i][k] = within[j][k] = true;
-                        res[j] = res[j] * 10 + k;
-                        len++;
-                        break;
-                    }
-                }
-            if(len != i+1) {
-
-            }
-        }
-
-        return res;
-
+        num = new int[N];
+        find(0,0,N,D,new int[N]);
+        return num;
     }
     int[] num;
     boolean find(int at, int digit, int N, int D, int[] cur) {
-        if(at == N-1 && digit == D) {
+        if(digit == D) {
             num = cur.clone();
             return true;
         }
-        for(int i = (digit==0?1:0); i < 10; i++)
-            if(can(cur, at, digit)) {
-                int prev = cur[at];
-                cur[at] = cur[at]*10+digit;
-                if(find((at+1)%N, digit+(at+1)/N, N,D,cur)) return true;
-                cur[at] = prev;
-            }
+        for(int i = (digit==0?1:0); i < 10; i++) {
+            int prev = cur[at];
+            cur[at] = cur[at]*10+i;
+            if(find((at+1)%N, digit, N,D,cur)) return true;
+            cur[at] = prev;
+        }
         return false;
     }
-    boolean can(int[] nums, int idx, int digit) {
-        int[] tmp = nums.clone();
-        tmp[idx] = tmp[idx]*10+digit;
-
+    boolean can(int[] nums) {
         HashSet<Integer> first = new HashSet<>();
         HashSet<Integer> last = new HashSet<>();
 
