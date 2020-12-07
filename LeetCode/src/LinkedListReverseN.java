@@ -1,8 +1,15 @@
-package PACKAGE_NAME;import java.util.*;
+import java.util.*;
 
-public class LinkedListReverseN 
-{
-    public static void main(String[] args)
-    {
-    }
+public class LinkedListReverseN {
+	ListNode successor = null;
+	ListNode reverseN(ListNode head, int n) {
+		if (n == 1) {
+			successor = head.next;
+			return head;
+		}
+		ListNode last = reverseN(head.next, n - 1);
+		head.next.next = head;
+		head.next = successor;
+		return last;
+	}
 }
