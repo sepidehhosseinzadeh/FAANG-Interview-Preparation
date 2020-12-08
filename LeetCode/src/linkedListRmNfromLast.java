@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListRmNfromLast {
+public class linkedListRmNfromLast {
 	public ListNode removeNthFromEnd_v0(ListNode head, int n) {
 		if (head == null || head.next == null) return null;
 

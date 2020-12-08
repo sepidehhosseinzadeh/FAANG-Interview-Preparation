@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LongestIncSeq {
+public class longestIncSeq {
     // O(n^2)
     public int lengthOfLIS_v0(int[] nums) {
         int n = nums.length, max = 0;

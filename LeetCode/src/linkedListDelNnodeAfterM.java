@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListDelNnodeAfterM {
+public class linkedListDelNnodeAfterM {
 	// itertative
 	public ListNode deleteNodes_v0(ListNode head, int m, int n) {
 		ListNode h = new ListNode(-1), newHead = h;

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListMerge2Sorted {
+public class linkedListMerge2Sorted {
 	// iterative
 	public ListNode mergeTwoLists_v0(ListNode l1, ListNode l2) {
 		ListNode p1 = l1, p2 = l2;

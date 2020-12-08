@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListCycle {
+public class linkedListCycle {
 	// Approch1 : we can use a HashSet to see if we already seen a node before!!!
 
 	// two pointer

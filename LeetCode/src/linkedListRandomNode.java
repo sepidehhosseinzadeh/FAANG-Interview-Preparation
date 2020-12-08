@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListRandomNode {
+public class linkedListRandomNode {
 	/**
 	 * Definition for singly-linked list.
 	 * public class ListNode {

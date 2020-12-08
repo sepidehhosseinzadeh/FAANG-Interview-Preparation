@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListReverseNM {
+public class linkedListReverseNM {
 	// recursive (two pass)
 	public ListNode reverseBetween_v0(ListNode head, int m, int n) {
 		if(head == null) return null;

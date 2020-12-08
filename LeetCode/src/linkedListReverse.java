@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListReverse {
+public class linkedListReverse {
 	/**
 	 * Definition for singly-linked list.
 	 * public class ListNode {

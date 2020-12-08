@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class OrderedStreamMem {
+public class orderedStreamMem {
     public static void main(String[] args)
     {
         OrderedStream orderedStream = new OrderedStream(5);

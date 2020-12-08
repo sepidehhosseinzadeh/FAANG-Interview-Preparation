@@ -16,11 +16,11 @@ At time 12, the votes are [0,1,1], and 1 is leading.
 At time 25, the votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the most recent vote.)
 This continues for 3 more queries at time 15, 24, and 8.
  */
-class TopVotedCandidate {
+class topVotedCandidate {
     int[] top;
     int[] t;
 
-    public TopVotedCandidate(int[] p, int[] t) {
+    public topVotedCandidate(int[] p, int[] t) {
         top = new int[p.length];
         this.t = t;
         int[] cnt = new int[p.length + 1];

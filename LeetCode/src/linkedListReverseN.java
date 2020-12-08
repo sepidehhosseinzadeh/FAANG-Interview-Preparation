@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListReverseN {
+public class linkedListReverseN {
 	ListNode successor = null;
 	ListNode reverseN(ListNode head, int n) {
 		if (n == 1) {

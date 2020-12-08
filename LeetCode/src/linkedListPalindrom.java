@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListPalindrom {
+public class linkedListPalindrom {
 	public boolean isPalindrome_v0(ListNode head) {
 		if(head == null || head.next == null) return true;
 
