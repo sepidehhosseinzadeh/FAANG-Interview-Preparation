@@ -16,7 +16,7 @@ public class linkedListDelNnodeAfterM {
 		return newHead.next;
 	}
 
-	// itertative, without dummy node
+	// itertative, without dummy node 
 	public ListNode deleteNodes(ListNode head, int m, int n) {
 		ListNode pre = null, cur = head;
 
