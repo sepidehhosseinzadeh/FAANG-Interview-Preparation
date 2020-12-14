@@ -27,6 +27,7 @@ public class coinChangeVariation {
         return table[n][m - 1];
     }
 
+    // it's like reducing the 2D DP to 1D DP!
     static long countWays_method1(int S[], int m, int n)
     {
         long[] table = new long[n+1];
@@ -59,6 +60,20 @@ public class coinChangeVariation {
             }
 
         return res;
+    }
+    static public int coinChange(int[] coins, int amount) {
+        int INF = Integer.MAX_VALUE;
+        int n = coins.length;
+        int[] dp = new int[amount+1];
+        Arrays.fill(dp, INF);
+
+        dp[0] = 0;
+        for(int j = 0; j <= amount; j++)
+            for(int i = 0; i < n; i++)
+                if(j >= coins[i] && dp[j-coins[i]] != INF)
+                    dp[j] = Math.min(dp[j], dp[j-coins[i]]+1);
+
+        return dp[amount] == INF ? -1 : dp[amount];
     }
     static int minNumbers_BFS(int x, int []arr, int n)
     {
