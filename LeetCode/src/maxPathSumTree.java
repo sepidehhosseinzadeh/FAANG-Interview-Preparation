@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class maxSumTree {
+public class maxPathSumTree {
 	int maxSum;
 	int MIN = Integer.MIN_VALUE;
 	public int maxPathSum(TreeNode root) {
