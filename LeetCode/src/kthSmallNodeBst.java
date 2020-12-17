@@ -38,20 +38,14 @@ public class kthSmallNodeBst {
     public int kthSmallest(TreeNode t, int k) {
         var stack = new Stack<TreeNode>();
 
-        TreeNode cur = t;
-        while(cur != null) {stack.push(cur); cur = cur.left;}
+        while(true) {
+            while(t != null) {stack.push(t); t = t.left;}
 
-        while(!stack.isEmpty()) {
-            cur = stack.pop();
+            t =  stack.pop();
+            if(--k == 0) return t.val;
 
-            if(--k == 0) return cur.val;
-
-            if(cur != null) {
-                cur = cur.right;
-                while(cur != null) {stack.push(cur); cur = cur.left;}
-            }
+            t = t.right;
         }
-        return -1;
     }
 
 
