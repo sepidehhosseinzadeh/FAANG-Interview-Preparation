@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class lowestCommonAncestor {
+public class lowestCommonAncestorBinaryTree {
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		if(root == null) return null;
 		if(root == p || root == q) return root;
