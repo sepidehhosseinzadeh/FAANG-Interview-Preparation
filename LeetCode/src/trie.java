@@ -1,61 +1,66 @@
-import java.util.*;
-
 class TrieNode {
-    char val;
     TrieNode[] child;
-    boolean isWord;
-    TrieNode(char v)
-    {
-        val = v;
+    boolean isEnd;
+    TrieNode() {
         child = new TrieNode[26];
-        isWord = false;
+        isEnd = false;
     }
 }
 class Trie {
     TrieNode root;
+
+    /** Initialize your data structure here. */
     public Trie() {
-        root = new TrieNode(' ');
+        root = new TrieNode();
     }
 
-    public void insert(String word) {
-        char[] ch = word.toCharArray();
-        TrieNode t = root;
-        for(char c : ch)
-        {
-            if(t.child[c-'a'] == null)
-                t.child[c-'a'] = new TrieNode(c);
-            t = t.child[c-'a'];
+    /** Inserts a word into the trie. */
+    public void insert(String w) {
+        TrieNode at = root;
+        for(int i = 0; i < w.length(); i++) {
+            if(at.child[w.charAt(i)-'a'] == null) // this if is IMPORTANT!!!!! o.w. the info inside node will be gone!!!!
+                at.child[w.charAt(i)-'a'] = new TrieNode();
+            at = at.child[w.charAt(i)-'a'];
         }
-        t.isWord = true;
+        at.isEnd = true;
     }
 
-    public boolean search(String word) {
-        char[] ch = word.toCharArray();
-        TrieNode t = root;
-        for(char c : ch)
-        {
-            if(t.child[c-'a'] == null) return false;
-            t = t.child[c-'a'];
+    /** Returns if the word is in the trie. */
+    public boolean search(String w) {
+        TrieNode at = root;
+        for(int i = 0; i < w.length(); i++) {
+            if(at.child[w.charAt(i)-'a'] == null) return false;
+            at = at.child[w.charAt(i)-'a'];
         }
-        return t.isWord;
+        return at.isEnd;
+    }
+    // word may contain dots '.' where dots can be matched with any letter.
+    public boolean searchWithDot(String w) {
+        return search(w, 0, root);
+    }
+    public boolean search(String w, int idx, TrieNode at) {
+        if(idx == w.length()) return at!= null && at.isEnd;
+        if(at == null) return false;
+
+        if(w.charAt(idx) != '.') {
+            return search(w,idx+1,at.child[w.charAt(idx)-'a']);
+        } else {
+            for(int j = 0; j < 26; j++)
+                if(at.child[j] != null)
+                    if(search(w,idx+1,at.child[j]))
+                        return true;
+            return false;
+        }
+
     }
 
-    public boolean startsWith(String prefix) {
-        char[] ch = prefix.toCharArray();
-        TrieNode t = root;
-        for(char c : ch)
-        {
-            if(t.child[c-'a'] == null) return false;
-            t = t.child[c-'a'];
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String w) {
+        TrieNode at = root;
+        for(int i = 0; i < w.length(); i++) {
+            if(at.child[w.charAt(i)-'a'] == null) return false;
+            at = at.child[w.charAt(i)-'a'];
         }
         return true;
     }
 }
-
-/**
-* Your Trie object will be instantiated and called as such:
-* Trie obj = new Trie();
-* obj.insert(word);
-* boolean param_2 = obj.search(word);
-* boolean param_3 = obj.startsWith(prefix);
-*/
