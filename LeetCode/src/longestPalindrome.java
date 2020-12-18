@@ -1,8 +1,22 @@
 import java.util.*;
 
 public class longestPalindrome {
+	public String longestPalindrome(String ss) {
+		int n = ss.length();
+		char[] s = ss.toCharArray();
+		boolean[][] dp = new boolean[n+1][n+1];
+		String res = "";
+		for(int l = 1; l <= n; l++)
+			for(int i = 0; i+l-1 < n; i++) {
+				int j = i+l-1;
+				dp[i][j] = s[i]==s[j] && (j-i <= 1 || dp[i+1][j-1]);
+				if(dp[i][j] && res.length() < j-i+1) res = ss.substring(i, j+1);
+			}
+		return res;
+	}
+
 	//o(n^2) o(n^2)
-	public String longestPalindrome_v0(String ss) {
+	public String longestPalindrome_v1(String ss) {
 		int n = ss.length();
 		char[] s = ss.toCharArray();
 		int[][] dp = new int[n+1][n+1];
@@ -32,7 +46,7 @@ public class longestPalindrome {
 	}
 
 	//o(n^2) o(1)
-	public String longestPalindrome(String s) {
+	public String longestPalindrome_v2(String s) {
 		if (s == null || s.length() < 1) return "";
 		int start = 0, end = 0;
 		for (int i = 0; i < s.length(); i++) {
