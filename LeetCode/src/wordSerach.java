@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class wordSerachMatrix {
+public class wordSerach {
 	int[] d = new int[] {0,1,0,-1,0};
 	int n,m;
 	public boolean exist(char[][] board, String word_) {
