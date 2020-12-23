@@ -1,6 +1,55 @@
 import java.util.*;
 
-public class findMissingAndRepeat {
+public class findMissingAndRepeat_findDuplicate {
+	public int findDuplicate_v0(int[] nums) {
+		int n = nums.length, i = 0;
+		while(nums[i] > 0) {
+			int to = nums[i];
+			nums[i] = -1;
+			i = to;
+		}
+		return i;
+	}
+
+	public int findDuplicate_v1(int[] nums) {
+		int slow = 0, fast = 0;
+		while(slow == 0 || slow != fast) {
+			slow = nums[slow];
+			fast = nums[nums[fast]];
+		}
+		slow = 0;
+		while(slow != fast) {
+			slow = nums[slow];
+			fast = nums[fast];
+		}
+		return slow;
+	}
+
+	// o(n)+o(logn): if count of lb to mid are mid+1 then all are unique,
+	// then search the other half
+	public int findDuplicate(int[] nums) {
+		int n = nums.length;
+		int[] cnt = new int[n];
+		var set = new HashSet<Integer>();
+		for(int i = 0; i < n; set.add(nums[i]),cnt[i]=set.size(), i++);
+
+		int lb = 0, ub = n-1;
+		while(lb < ub) {
+			int mid = lb+(ub-lb)/2;
+			if(cnt[mid]-(lb==0?0:cnt[lb-1]) == mid-lb+1) lb = mid+1;
+			else ub = mid;
+		}
+		return nums[lb];
+	}
+
+
+
+
+
+
+
+	/**find missing and repeating if array has 1 missing and 1 reapting 1...n**/
+
 	// 1-  calc S and S^2 for both arr and 1...n
 	// we have the formula n*(n+1)/2 and n*(n+1)*(2n+1)/6
 	// calc x^2 - y^2 = (x-y)*(x+y) -> we get x+y, then putting
