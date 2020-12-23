@@ -15,7 +15,7 @@ Example 2:
 Input: [1,2,4,8]
 Output: [1,2,4,8]
  */
-public class LargestDivisibleSubSet {
+public class largestDivisibleSubSet {
     public List<Integer> largestDivisibleSubset(int[] nums) {
         int n = nums.length;
         int[] maxSubTill = new int[n];

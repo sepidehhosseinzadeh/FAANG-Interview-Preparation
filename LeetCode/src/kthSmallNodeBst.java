@@ -1,66 +1,53 @@
 import java.util.*;
 
 public class kthSmallNodeBst {
-    // O(N) best, O(N^2) worst
-    int kthSmallest(TreeNode root, int k) {
-        int count = countNodes(root.left);
-        if (k <= count) {
-            return kthSmallest(root.left, k);
-        }
-        else if (k > count + 1) {
-            return kthSmallest(root.right, k - 1 - count); // 1 is counted as current node
-        }
-
-        return root.val;
-    }
-
-    public int countNodes(TreeNode n) {
-        if (n == null) return 0;
-
-        return 1 + countNodes(n.left) + countNodes(n.right);
-    }
-
-    private static int number = 0;
-    private static int count = 0;
 
     // O(N)
-    public int kthSmallest_v1(TreeNode root, int k) {
-        count = k;
-        helper(root);
-        return number;
+    int nleft, val;
+    public int kthSmallest_v0(TreeNode t, int k) {
+        nleft = 0; val = -1;
+        kthSmallestRec(t,k);
+        return val;
+    }
+    public int kthSmallestRec(TreeNode t, int k) {
+        if(t == null) return -1;
+
+        kthSmallestRec(t.left, k);
+
+        nleft++;
+        if(nleft == k) val= t.val;
+
+        kthSmallestRec(t.right, k);
+
+        return -1;
     }
 
-    public void helper(TreeNode n) {
-        if (n.left != null) helper(n.left);
-        count--;
-        if (count == 0) {
-            number = n.val;
-            return;
-        }
-        if (n.right != null) helper(n.right);
+    // O(N) best, O(N^2) worst
+    public int kthSmallest_v1(TreeNode t, int k) {
+        if(t == null) return -1;
+
+        int nleft = countTree(t.left);
+        if(nleft+1 == k) return t.val;
+        else if(nleft >= k) return kthSmallest(t.left, k);
+        else return kthSmallest(t.right, k-(nleft+1)); // 1 for current node
+    }
+    int countTree(TreeNode at) {
+        return at == null ? 0 : 1+countTree(at.left)+countTree(at.right);
     }
 
-    public int kthSmallest_v3(TreeNode root, int k) {
-        Stack<TreeNode> st = new Stack<>();
+    public int kthSmallest(TreeNode t, int k) {
+        var stack = new Stack<TreeNode>();
 
-        while (root != null) {
-            st.push(root);
-            root = root.left;
+        while(true) {
+            while(t != null) {stack.push(t); t = t.left;}
+
+            t =  stack.pop();
+            if(--k == 0) return t.val;
+
+            t = t.right;
         }
-
-        while (k != 0) {
-            TreeNode n = st.pop();
-            k--;
-            if (k == 0) return n.val;
-            TreeNode right = n.right;
-            while (right != null) {
-                st.push(right);
-                right = right.left;
-            }
-        }
-
-        return -1; // never hit if k is valid
     }
+
 
     // builing the BST with left count
     class Node {
@@ -88,15 +75,13 @@ public class kthSmallNodeBst {
     }
     public Node kthSmallest(Node root, int k)
     {
-        if (root == null)
-            return null;
+        if (root == null) return null;
 
         int count = root.lCount + 1;
-        if (count == k)
-            return root;
+        if (count == k) return root;
 
-        if (count > k)
-            return kthSmallest(root.left, k);
+        if (count > k) return kthSmallest(root.left, k);
+
         return kthSmallest(root.right, k - count);
     }
 

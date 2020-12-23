@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class serializeTree {
+public class serializeBST {
     private class TreeNode {
         int val;
         TreeNode left;

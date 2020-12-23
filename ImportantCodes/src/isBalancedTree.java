@@ -16,7 +16,8 @@ public class isBalancedTree {
         int rightHeight = checkHeight(root.right);
         if (rightHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE; // Pass error up
 
-        //What do we use for an error code? The height of a null tree is generally defined to be -1, so that's not a great idea for an error code. Instead, we' ll use Integer. MIN_VALUE.
+        //What do we use for an error code? The height of a null tree is generally defined to be -1,
+        // so that's not a great idea for an error code. Instead, we' ll use Integer.MIN_VALUE.
         int heightDiff = leftHeight - rightHeight;
         if (Math.abs(heightDiff) > 1) {
             return Integer.MIN_VALUE; // Found error -> pass it back
