@@ -3,11 +3,16 @@ public class ChristmasLightsFixing
 {
     public int[] fixingTime(int N, long step)
     {
-        int[] res;
+        String bin = Long.toBinaryString(step);
+        int[] res = new int[Long.bitCount(step)];
+        for(int i = bin.length()-1, j = 0; i >= 0; i--)
+            if(bin.charAt(i) == '1')
+                res[j++] = i+1;
+
         return res;
     }
 
-// BEGIN CUT HERE
+    // BEGIN CUT HERE
     public static void main(String[] args) {
         try {
             eq(0,(new ChristmasLightsFixing()).fixingTime(5, 16L),new int[] {0, 1, 2 });
