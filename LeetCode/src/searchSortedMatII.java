@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class searchSortedMat {
+public class searchSortedMatII {
 	public boolean searchMatrix_v0(int[][] mat, int t) {
 		int n = mat.length, m = mat[0].length;
 		int i = n-1, j = 0;
