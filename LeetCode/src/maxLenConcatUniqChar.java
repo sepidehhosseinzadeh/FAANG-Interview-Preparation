@@ -1,6 +1,6 @@
 package PACKAGE_NAME;import java.util.*;
 
-public class searchMat 
+public class maxLenConcatUniqChar 
 {
     public static void main(String[] args)
     {
