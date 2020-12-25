@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class combineDigits {
+public class letterCombinePhone {
 	ArrayList<String> res = new ArrayList<String>();
 	String[] map = new String[] {"", "", "abc", "def", "ghi",
 			"jkl", "mno", "pqrs", "tuv", "wxyz"};
