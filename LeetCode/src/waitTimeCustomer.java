@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class tst {
+public class waitTimeCustomer {
 	public static void main(String[] args)
 	{
 		System.out.print(averageWaitingTime(new int[][] {{2,3},{6,3},{7,5},{11,3},{15,2},{18,1}}));
