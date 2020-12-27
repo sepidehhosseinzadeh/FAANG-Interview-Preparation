@@ -1,29 +1,27 @@
 import java.util.*;
 
-public class maxApples {
-	public static void main(String[] args)
-	{
-		System.out.print(eatenApples(new int[]{1,2,3,5,2}, new int[]{3,2,1,4,2}));
-		System.out.print(eatenApples(new int[]{3,0,0,0,0,2}, new int[]{3,0,0,0,0,2}));
-	}
-	public static int eatenApples(int[] apples, int[] days) {
+public class maxEatenApples {
+	public int eatenApples(int[] apples, int[] days) {
 		int n = apples.length;
 		PriorityQueue<int[]> q = new PriorityQueue<>((i,j) -> i[1]-j[1]);
-		for(int i = 0; i < n; i++) q.add(new int[] {apples[i], i+days[i]});
 
-		int day = 0;
-		while (!q.isEmpty()) {
-			while(!q.isEmpty() && !(q.peek()[0] > 0 && q.peek()[1] > day)) q.remove();
-			if(q.isEmpty()) break;
+		// THIS IS FUU**WRONG!!!! ON THE DAY IT GROWS APPLES!!!!
+		// APPLES ADD TP Q ON THE DAY!!!!
+		/*for(int i = 0; i < n; i++) q.add(new int[] {apples[i], i+days[i]});*/
 
-			int[] at = q.remove();
-			int toEat = Math.min(at[0], at[1]-day);
-			day += toEat;
+		int eaten = 0;
+		for(int day = 0; day < n || !q.isEmpty(); day++) {
+			if(day < n) q.add(new int[] {apples[day], day+days[day]});
+			while(!q.isEmpty() && !(q.peek()[0] > 0 && q.peek()[1] > day)) q.poll();
 
-			at[0] -= toEat;
-			if(at[0] > 0) q.add(at);
+			if(!q.isEmpty()) {
+				int[] at = q.poll();
+				eaten++;
+				at[0]--;
+				q.add(at);
+			}
 		}
 
-		return day;
+		return eaten;
 	}
 }
