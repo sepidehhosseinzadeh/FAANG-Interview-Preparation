@@ -61,7 +61,7 @@ public class tallestTowerPeople {
     }
 
     // Iterative solution O(n^2) + O(nlog(n))
-    // Find the longest subsequence that terminates with each element. Track the
+    // Find the longest inc subsequence that terminates with each element. Track the
     // longest overall subsequence as we go.
     static ArrayList<Person> getTallestTowerIter(ArrayList<Person> people)
     {

@@ -340,4 +340,11 @@ https://www.youtube.com/channel/UC_mYaQAE6-71rjSN6CeCA-g
 - Company tagged leetcode discuss
 - https://www.pramp.com/ everyday
 
-* Followed this for 3 months.
+* Follow this for 3-6 months.
+
+## When are you ready? (measure of readiness)
+- When you can solve 2 medium (1 hard) leetcode questions in 25 min.
+- You should start by bruteforce solution, to have a clear understanding of the question. Then use a real example to brain storm solutions and time/space complexitties. 
+- Edge case test before starting to code.
+- Trust your modules/functions during coding.
+- Timer starts when you start coding (https://www.programmercoach.com/).

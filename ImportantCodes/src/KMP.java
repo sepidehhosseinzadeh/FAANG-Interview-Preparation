@@ -1,6 +1,15 @@
 import java.util.*;
 
 public class KMP {
+    public static void main(String[] args) {
+        kmp("abc","abcabcdfgabckl");
+        /*
+        Match found at: 0
+        Match found at: 3
+        Match found at: 9
+         */
+    }
+    // o(n+m)
     static void kmp(String pat_, String txt_)
     {
         char[] pat = pat_.toCharArray();
@@ -9,7 +18,7 @@ public class KMP {
         int i = 0, j = 0;
         int n = pat.length, m = txt.length;
 
-        int[] lps = LPS(pat);
+        int[] p = kmp(pat);
 
         while(j < m)
         {
@@ -20,45 +29,31 @@ public class KMP {
             }
             if(i == n)
             {
-                System.out.println("Match found at: "+(i-j));
-                i = lps[i-1];
+                System.out.println("Match found at: "+(j-i));
+                i = p[i-1];
             }
-            else if(pat[i] != txt[j])
+            if(pat[i] != txt[j])
             {
-                if(i>0) i = lps[i-1];
+                if(i>0) i = p[i-1];
                 else j++;
             }
         }
     }
-    // build Longest Prefix Suffix: where to start matching
+    // lps[i]: where to start matching
     // in pattern, after a mismatch at i+1
-    static int[] LPS(char[] pat)
+    // Longest suffix that also is a prefix
+    static int[] kmp(char[] pat)
     {
         int n = pat.length;
-        int[] lps = new int[n];
-        int i = 1, len = 0;
-        lps[0] = 0;
+        int[] p = new int[n];
 
-        while (i < n)
-        {
-            if(pat[i] == pat[len])
-            {
-                len++;
-                lps[i] = len;
-                i++;
-            }
-            else
-            {
-                if(len == 0)
-                {
-                    lps[i] = len;
-                    i++;
-                }
-                else
-                    len = lps[len-1];
-            }
+        p[0] = 0;
+        for(int i = 1; i < n; i++) {
+            int len = p[i-1];
+            while(len > 0 && pat[i] != pat[len]) len = p[len-1];
+            p[i] = len + (pat[i] == pat[len]?1:0);
         }
-        return lps;
+        return p;
     }
 }
 
