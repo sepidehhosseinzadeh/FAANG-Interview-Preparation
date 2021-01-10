@@ -3,7 +3,18 @@ public class OrganicChemistry
 {
     public int countHydrogens(String atoms, int[] X, int[] Y)
     {
-        int res;
+        int n = X.length, m = atoms.length();
+        int[] degree = new int[m];
+        for(int i = 0; i < n; i++) {
+            degree[X[i]]++;
+            degree[Y[i]]++;
+        }
+        String a = "AAONC";
+        int res = 0;
+        for(int i = 0; i < m ;i++) {
+            res += Math.max(0, a.indexOf(atoms.charAt(i))-degree[i]);
+        }
+
         return res;
     }
 
