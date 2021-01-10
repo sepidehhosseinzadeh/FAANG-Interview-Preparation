@@ -1,28 +1,32 @@
 import java.util.*;
 
 public class constructArr {
-	public static void main(String[] args)
-	{
-		System.out.println(constructDistancedSequence(3));
-	}
-	public static int[] constructDistancedSequence(int n) {
-		int m = (n-1)*2+1;
-		int[] arr = new int[m];
-		boolean[] num = new boolean[n+1];
-		for(int i = 0; i < m; i++) {
-			int j = n, cnt = 0;
-			boolean allTrue = false;
-			while(!(!num[j] && i+j < m && arr[i] == 0 && (j == 0 || arr[i+j] == 0))) {
-				j--;
-				if(cnt > 1) {allTrue = true;break;}
-				if(j == 0) {j = n; cnt++;}
-			}
-			if(allTrue) break;
-			num[j] = true;
-			arr[i] = j; if(j!=1) arr[i+j] = j;
-			System.out.println(i + " " + i+j);
-		}
-
+	public int[] constructDistancedSequence(int n) {
+		int[] arr = new int[2*(n-1)+1];
+		boolean[] nums = new boolean[n+1];
+		put(0, n, arr, nums);
 		return arr;
+	}
+	// fill each position with max potential num
+	boolean put(int at, int n, int[] arr, boolean[] nums) {
+		int m = arr.length;
+		if(at == m) return true;
+		if(arr[at] != 0) return put(at+1,n,arr, nums); // coz we fill at and at+i, so skip if filled
+
+		for(int i = n; i > 0; i--) {
+			if(nums[i]) continue;
+			if(i > 1 && (at+i >= m || arr[at+i] != 0)) continue;
+
+			nums[i] = true;
+			arr[at] = i;
+			if(i > 1) arr[at+i] = i;
+
+			if(put(at+1,n, arr, nums)) return true; // return first solution
+
+			nums[i] = false;
+			arr[at] = 0;
+			if(i > 1) arr[at+i] = 0;
+		}
+		return false;
 	}
 }
