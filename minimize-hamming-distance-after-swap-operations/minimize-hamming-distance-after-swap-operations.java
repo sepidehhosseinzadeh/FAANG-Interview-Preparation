@@ -44,3 +44,5 @@ class Solution {
     int find(int[] p, int i) {
         if(p[i] == i) return i;
         return p[i] = find(p, p[i]);
+    }
+}
