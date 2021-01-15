@@ -1,5 +1,5 @@
 class Solution {
-    public boolean backspaceCompare(String S, String T) {
+    public boolean backspaceCompare_v0(String S, String T) {
         Stack<Character> s = new Stack<>();
         Stack<Character> t = new Stack<>();
         
@@ -16,5 +16,35 @@ class Solution {
         }
         
         return s.isEmpty() && t.isEmpty();
+    }
+    
+    public boolean backspaceCompare(String S, String T) {
+        int n = S.length(), m = T.length();
+        char[] s = S.toCharArray(), t = T.toCharArray();
+        
+        int bs1 = 0, bs2 = 0;
+        int i = n-1, j = m-1;
+        while(true) {
+            while(i >= 0 && (s[i] == '#' || bs1 > 0) || 
+                        j >= 0 && (t[j] == '#' || bs2 > 0)) {
+                if(i >= 0 && s[i] == '#') {
+                    bs1++; i--;
+                }
+                else if(j >= 0 && t[j] == '#') {
+                    bs2++; j--;
+                }
+                else if(i >= 0 && s[i] != '#' && bs1 > 0) {
+                    bs1--; i--;
+                }
+                else if(j >= 0 && t[j] != '#' && bs2 > 0) {
+                    bs2--; j--;
+                }
+            }
+            if(i >= 0 && j >= 0 && s[i] == t[j]) {
+                i--; j--;
+            }
+            else break;
+        }
+        return i < 0 && j < 0;
     }
 }
