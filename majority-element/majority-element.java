@@ -6,6 +6,7 @@ class Solution {
             cnt.put(i, cnt.getOrDefault(i,0)+1);
             if(cnt.get(i) > nums.length/2) return i;
         }
+        
         return -1;
     }
 }
