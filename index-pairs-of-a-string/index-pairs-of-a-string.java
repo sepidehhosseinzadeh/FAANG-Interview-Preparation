@@ -1,14 +1,3 @@
-        for(int i = 0; i < w.length(); i++) {
-            if(at.child[w.charAt(i)-'a'] == null) return false;
-            at = at.child[w.charAt(i)-'a'];
-        }
-        return at.isEnd;
-    }
-}
-​
-class Solution {
-    public int[][] indexPairs(String text, String[] words) {
-        char[] ch = text.toCharArray();
         ArrayList<int[]> res = new ArrayList<>();
         
         TrieNode trie = new TrieNode();
@@ -22,13 +11,32 @@ class Solution {
                     t = t.child[ch[j]-'a'];
                     if(t.isEnd) res.add(new int[] {i,j});
                     j++;
-                }
+                }
             }
         
         int[][] ret = new int[res.size()][2];
         int k = 0;
         for(int[] a : res) ret[k++] = a;
         
+        return ret;
+    }
+    
+    public int[][] indexPairs(String text, String[] words) {
+        char[] ch = text.toCharArray();
+        ArrayList<int[]> res = new ArrayList<>();
+        
+        for(String w : words) {
+            int i = text.indexOf(w);
+            while(i != -1) {
+                res.add(new int[] {i, i+w.length()-1});
+                i = text.indexOf(w, i+1);
+            }
+        }
+        
+        int[][] ret = new int[res.size()][2];
+        int k = 0;
+        for(int[] a : res) ret[k++] = a;
+        Arrays.sort(ret, (i,j) -> i[0]!=j[0] ? i[0]-j[0] : i[1]-j[1]);
         return ret;
     }
     
