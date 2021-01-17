@@ -1,5 +1,5 @@
 class Solution {
-    // hashmap cnt for counting different pairs for a specific sum
+    // hashmap cnt for counting different pairs for a specific mult
     // choose(m,2) * 2!*2!*2! different ways of 2 pairs-each pair 2! and 2 pair can switch side. 
     // nums = [2,3,4,6] : 
     // (2,6,3,4) , (2,6,4,3) , (6,2,3,4) , (6,2,4,3)
