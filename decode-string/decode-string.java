@@ -3,7 +3,8 @@ class Solution {
         Stack<String> stack = new Stack<>();
         
         char[] s = S.toCharArray();
-        for(int i = 0, n = s.length; i < n; ) {
+        int i = 0, n = s.length;
+        while(i < n) {
             if(s[i] == '[') 
                 i++;
             else if(Character.isDigit(s[i])) {
@@ -17,13 +18,13 @@ class Solution {
                     num = num+str;
                     str = num;
                     num = stack.pop();
-                }
+                 }
                 String ret = "";
                 for(int j = 0; j < Integer.valueOf(num); j++) 
                         ret += str;
-                while(!stack.isEmpty() && 
-                        Character.isLetter(stack.peek().charAt(0)))
-                    ret = stack.pop()+ ret;
+                //while(!stack.isEmpty() && 
+                //        Character.isLetter(stack.peek().charAt(0)))
+                //    ret = stack.pop()+ ret;
                 
                 stack.push(ret);
                 i++;
