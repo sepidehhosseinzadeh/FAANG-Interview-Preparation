@@ -11,8 +11,8 @@ class Solution {
         for(int h1:d) for(int h2:d) if(h1*10+h2 < 24)
             for(int m1:d) for(int m2:d) if(m1*10+m2 < 60) {
                 int now = (h1*10+h2)*60 + m1*10+m2;
-                int elapsed = Math.floorMod(now - m, 24*60);
-                if(elapsed>0 && elapsed < 60*24 && elapsed < minElap) {
+                int elapsed = (now - m + 24*60) % (24*60);
+                if(elapsed != 0 && elapsed < minElap) {
                     minElap = elapsed;
                     res = now;
                 }
