@@ -31,10 +31,10 @@ class Solution {
     
     // DP 
     public int longestStrChain(String[] words) {
-        Arrays.sort(words, (i,j) -> i.length()-j.length());
+        Arrays.sort(words, (i,j) -> i.length()-j.length()); // go in order
         Map<String, Integer> dp = new HashMap<>();
         int max = 0;
-        for(String w : words) {
+        for(String w : words) { // for each w to be added, find neighbors with missing 1 char in dp, and update +1
             int best = 1;
             for(int i = 0; i < w.length(); i++) {
                 String prev = w.substring(0,i)+w.substring(i+1);
