@@ -70,3 +70,8 @@
 ##### Good resource: 
 - https://engineerseekingfire.com/how-to-prepare-for-software-engineering-interviews/
 - https://www.programmercoach.com/
+- https://dou.ua/lenta/articles/google-interview/ 
+- https://paper.dropbox.com/doc/Interview-Preparation-Guide--BD3I2Wz6__hiV7q0hyLetWe5Ag-PHeQLxMXugqC1vz72wgtX
+- https://docs.google.com/document/d/1yMBDTeM49rm8Yni-BYzxakwSW3Ce_MKum65s6wEPQic/edit#heading=h.vi67xmikl1i8
+
+- 
