@@ -1,7 +1,7 @@
 ##### Consistency is the key
 <img src="github_pic.png" alt="github progress" width="600" height="200">
 
-## FAANG Interview Coding Preparation
+## FAANG Interview Preparation
 
 ### Coding until you solve the questions in 45 min
 - Look at the solution if you can't solve it in 30 mins.
