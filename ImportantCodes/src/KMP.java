@@ -2,7 +2,8 @@ import java.util.*;
 
 public class KMP {
     public static void main(String[] args) {
-        kmp("abc","abcabcdfgabckl");
+        System.out.println(matchIndices(("abcabcdfgabckl").toCharArray(),
+                ("abc").toCharArray()));
         /*
         Match found at: 0
         Match found at: 3
@@ -10,35 +11,6 @@ public class KMP {
          */
     }
     // o(n+m)
-    static void kmp(String pat_, String txt_)
-    {
-        char[] pat = pat_.toCharArray();
-        char[] txt = txt_.toCharArray();
-
-        int i = 0, j = 0;
-        int n = pat.length, m = txt.length;
-
-        int[] p = kmp(pat);
-
-        while(j < m)
-        {
-            if(pat[i] == txt[j])
-            {
-                j++;
-                i++;
-            }
-            if(i == n)
-            {
-                System.out.println("Match found at: "+(j-i));
-                i = p[i-1];
-            }
-            if(pat[i] != txt[j])
-            {
-                if(i>0) i = p[i-1];
-                else j++;
-            }
-        }
-    }
     // lps[i]: where to start matching
     // in pattern, after a mismatch at i+1
     // Longest suffix that also is a prefix
@@ -54,6 +26,30 @@ public class KMP {
             p[i] = len + (pat[i] == pat[len]?1:0);
         }
         return p;
+    }
+    static boolean match(char[] txt, char[] pat) {
+        int[] p = kmp(pat);
+        for(int i = 0, l = 0; i < txt.length && l < pat.length; i++) {
+            while(l > 0 && txt[i] != pat[l]) l = p[l-1];
+            l = l + (txt[i]==pat[l] ? 1 : 0);
+
+            if(l == pat.length) return true;
+        }
+        return false;
+    }
+
+    static ArrayList<Integer> matchIndices(char[] txt, char[] pat) {
+        var indices = new ArrayList<Integer>();
+        int[] p = kmp(pat);
+        for(int i = 0, l = 0; i < txt.length && l < pat.length; i++) {
+            while(l > 0 && txt[i] != pat[l]) l = p[l-1];
+            l = l + (txt[i]==pat[l] ? 1 : 0);
+            if(l == pat.length) {
+                indices.add(i-l+1); // Match found at: (i-l)
+                l = p[l-1];
+            }
+        }
+        return indices;
     }
 }
 
