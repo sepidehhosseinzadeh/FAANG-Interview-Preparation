@@ -1,12 +1,9 @@
 class ValidWordAbbr {
     Map<String, HashSet<String>> abb2w;
-    Map<String, String> w2abb;
     public ValidWordAbbr(String[] dic) {
         abb2w = new HashMap<>();
-        w2abb = new HashMap<>();
         for(String w : dic) {
             String abb = abb(w);
-            w2abb.put(w,abb);
             HashSet<String> ws = abb2w.getOrDefault(abb, new HashSet<>());
             ws.add(w);
             abb2w.put(abb, ws);
@@ -21,7 +18,7 @@ class ValidWordAbbr {
     public boolean isUnique(String w) {
         String abb = abb(w);
         if(!abb2w.containsKey(abb)) return true;
-        if(w2abb.containsKey(w) && abb2w.get(abb).size()==1)
+        if(abb2w.get(abb).size()==1 && abb2w.get(abb).contains(w))
             return true;
         return false;
     }
