@@ -1,6 +1,6 @@
-public class ZigzagIterator {
+class ZigzagIterator_v0 {
     Queue<Queue<Integer>> qs;
-    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+    public ZigzagIterator_v0(List<Integer> v1, List<Integer> v2) {
         qs = new LinkedList<>();
         if(!v1.isEmpty()) qs.add(new LinkedList<Integer>(v1)); 
         if(!v2.isEmpty()) qs.add(new LinkedList<Integer>(v2));
@@ -18,25 +18,23 @@ public class ZigzagIterator {
     }
 }
 
-class ZigzagIterator_ {
-    Queue<Iterator<Integer>> queue; 
-    public ZigzagIterator_(List<Integer> v1, List<Integer> v2) {
-        this.queue = new LinkedList<Iterator<Integer>> ();
-        if(v1.iterator().hasNext()) 
-            queue.offer(v1.iterator());
-        if(v2.iterator().hasNext()) 
-            queue.offer(v2.iterator());
+public class ZigzagIterator {
+    Queue<Iterator<Integer>> q;
+    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+        q = new LinkedList<>();
+        if(!v1.isEmpty()) q.add(v1.iterator());
+        if(!v2.isEmpty()) q.add(v2.iterator());
     }
 
     public int next() {
-        Iterator<Integer> next = queue.poll();
-        int a  = next.next();
-        if(next.hasNext()) queue.offer(next);
-        return a;
+        Iterator<Integer> iter = q.poll();
+        int ret = iter.next();
+        if(iter.hasNext()) q.add(iter);
+        return ret;
     }
 
     public boolean hasNext() {
-        return !queue.isEmpty();
+        return !q.isEmpty();
     }
 }
 
