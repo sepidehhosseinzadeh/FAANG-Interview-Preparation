@@ -38,7 +38,7 @@ class Solution {
     // From each position we should know 
     // if the odd/even jump is possible or not
     // then alternatively 
-    public int oddEvenJumps(int[] A) {
+    public int oddEvenJumps_v1(int[] A) {
         int n = A.length;
         boolean[] even = new boolean[n], odd = new boolean[n];
         even[n-1] = odd[n-1] = true;
@@ -55,6 +55,26 @@ class Solution {
             }
             if(lo != null) even[i] = odd[map.get(lo)];
             if(hi != null) odd[i] = even[map.get(hi)];
+            if(odd[i]) cnt++;
+            
+            map.put(A[i], i);
+        }
+        return cnt;
+    }
+    
+    public int oddEvenJumps(int[] A) {
+        int n = A.length;
+        boolean[] even = new boolean[n], odd = new boolean[n];
+        even[n-1] = odd[n-1] = true;
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        map.put(A[n-1], n-1);
+        
+        int cnt = 1;
+        for(int i = n-2; i >= 0; i--) {
+            Map.Entry<Integer, Integer> lo = map.floorEntry(A[i]);
+            Map.Entry<Integer, Integer> hi = map.ceilingEntry(A[i]);
+            if(lo != null) even[i] = odd[lo.getValue()];
+            if(hi != null) odd[i] = even[hi.getValue()];
             if(odd[i]) cnt++;
             
             map.put(A[i], i);
