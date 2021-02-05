@@ -11,7 +11,7 @@ class Solution {
         for(int i = 0; i < n; i++)
             for(int j = 0; j < m; j++) 
                 if(grid[i][j] == 1) {
-                    bfs(i,j, grid, dis, reach);  
+                    bfs(i,j, nB, grid, dis, reach);  
                     nB++;
                 }
         
@@ -23,15 +23,12 @@ class Solution {
         return minD == Integer.MAX_VALUE ? -1 : minD;
     }
     
-    private void bfs(int x, int y, int[][] g, int[][] dis, int[][] reach) {
+    private void bfs(int x, int y, int nB, int[][] g, int[][] dis, int[][] reach) {
         int n = dis.length, m = dis[0].length;
         int[] d = new int[] {0,1,0,-1,0};
         
         Queue<int[]> q = new LinkedList();
         q.add(new int[] {x,y});
-
-        boolean[][] vis = new boolean[n][m];
-        vis[x][y] = true;
         
         int level = 1;
         
@@ -43,8 +40,7 @@ class Solution {
                 for(int k = 0; k < 4; k++) {
                     int tx = at[0]+d[k], ty = at[1]+d[k+1];
                     if(tx<0 || ty<0 || tx>=n || ty >=m) continue;
-                    if(g[tx][ty] == 0 && !vis[tx][ty]) {
-                        vis[tx][ty] = true;
+                    if(g[tx][ty] == 0 && reach[tx][ty] == nB) {
                         q.add(new int[] {tx,ty});
 
                         dis[tx][ty] += level;
