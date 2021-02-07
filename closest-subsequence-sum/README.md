@@ -1,3 +1,4 @@
+[Discussion Post (created on 7/1/2021 at 11:15)](https://leetcode.com/problems/closest-subsequence-sum/discuss/1054748/Java-meet-in-middle-and-TreeSet)  
 <h2>1755. Closest Subsequence Sum</h2><h3>Hard</h3><hr><div><p>You are given an integer array <code>nums</code> and an integer <code>goal</code>.</p>
 
 <p>You want to choose a subsequence of <code>nums</code> such that the sum of its elements is the closest possible to <code>goal</code>. That is, if the sum of the subsequence's elements is <code>sum</code>, then you want to <strong>minimize the absolute difference</strong> <code>abs(sum - goal)</code>.</p>
