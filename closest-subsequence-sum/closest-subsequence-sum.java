@@ -1,7 +1,7 @@
 class Solution {
     // Sub-SEQUENCE: for each sums in second half,
     // find the closest t-s in second half such that s1+s2 ~ t
-    public int minAbsDifference(int[] nums, int t) {
+    public int minAbsDifference_v0(int[] nums, int t) {
         int n = nums.length;
         int[] nums1 = new int[n/2];
         int[] nums2 = new int[n-n/2];
@@ -28,6 +28,35 @@ class Solution {
         
         return min;        
     }
+    public int minAbsDifference(int[] nums, int t) {
+        int n = nums.length;
+        int[] nums1 = new int[n/2];
+        int[] nums2 = new int[n-n/2];
+        for(int i = 0; i < n/2; i++) nums1[i] = nums[i];
+        for(int i = n/2; i < n; i++) nums2[i-n/2] = nums[i];
+        
+        var sums1 = new ArrayList<Integer>(); 
+        var sums2 = new ArrayList<Integer>(); 
+        
+        dfs(0, 0, nums1, sums1);
+        dfs(0, 0, nums2, sums2);
+        
+        Collections.sort(sums2);
+        
+        int min = Integer.MAX_VALUE;
+        for(int s1 : sums1) {
+            int s2 = t-s1; // find the closest to this 
+            int i = Collections.binarySearch(sums2, s2);
+            if(i >= 0) return 0; // exact match
+            else i = -i-1;
+            
+            if(i>0) min = Math.min(min, Math.abs(s1+sums2.get(i-1) - t));
+            if(i<sums2.size()) min = Math.min(min, Math.abs(s1+sums2.get(i) - t));
+        }
+        
+        return min;        
+    }
+    
     void dfs(int at, int s, int[] nums, ArrayList<Integer> sums) {
         if(at == nums.length) {
             sums.add(s);
