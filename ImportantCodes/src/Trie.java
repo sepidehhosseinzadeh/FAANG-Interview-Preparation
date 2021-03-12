@@ -1,105 +1,86 @@
 import java.util.*;
 
-public class Trie {
-    class Solution {
-        class Node implements Comparable<Node> {
-            int val, cnt;
-
-            Node(int val, int cnt)
-            {
-                this.val = val;
-                this.cnt = cnt;
-            }
-
-            @Override
-            public int compareTo(Node that)
-            {
-                return that.cnt - this.cnt;
-            }
+class TrieNode1 {
+    HashMap<Character, TrieNode1> child;
+    String word;
+    TrieNode1() {
+        child = new HashMap<Character, TrieNode1>();
+        word = "";
+    }
+    public void insert(String w) {
+        TrieNode1 at = this;
+        for(int i = 0; i < w.length(); i++) {
+            if(!at.child.containsKey(w.charAt(i)))
+                at.child.put(w.charAt(i), new TrieNode1());
+            at = at.child.get(w.charAt(i));
         }
-
-        class TrieNode {
-            TrieNode[] child = new TrieNode[32];
-            String val = "";
-        }
-
-        void add(String str, TrieNode t)
-        {
-            for (char c : str.toCharArray()) {
-                if (t.child[c - 'a'] == null)
-                    t.child[c - 'a'] = new TrieNode();
-                t = t.child[c - 'a'];
-            }
-            t.val = str;
-        }
-
-        boolean search(String str, TrieNode t)
-        {
-            return match(0, str.toCharArray(), t);
-        }
-
-        boolean match(int at, char[] ch, TrieNode t)
-        {
-            if (at == ch.length) return !t.val.equals("");
-
-            if (ch[at] != '.') {
-                return t.child[ch[at] - 'a'] != null &&
-                        match(at + 1, ch, t.child[ch[at] - 'a']);
-            } else {
-                for (int i = 0; i < 32; i++)
-                    if (t.child[ch[i] - 'a'] != null &&
-                            match(at + 1, ch, t.child[ch[i] - 'a']))
-                        return true;
-                return false;
-            }
-
-        }
-
-        public ArrayList<Integer> solve(String goodWords,
-                                        ArrayList<String> ratings)
-        {
-
-            TrieNode dic = new TrieNode();
-
-            for (String w : goodWords.split("_")) {
-                add(w, dic);
-            }
-            ArrayList<Node> ans = new ArrayList<Node>();
-            for (int i = 0; i < ratings.size(); i++) {
-                int cnt = 0;
-                for (String s : ratings.get(i).split("_"))
-                    if (search(s, dic))
-                        cnt++;
-                ans.add(new Node(i, cnt));
-            }
-            Collections.sort(ans);
-
-            ArrayList<Integer> res = new ArrayList<Integer>();
-            for (Node i : ans)
-                res.add(i.val);
-
-            return res;
-
-        }
+        at.word = w;
     }
 }
-/*
- * // count sort
-        ArrayList<Integer> res = new ArrayList<Integer>();
-        int[] cnt = new int[ratings.size()];
-        for(int i = 0; i < ratings.size(); i++)
-            for(String s : ratings.get(i).split("_"))
-                if(search(s, dic))
-                    cnt[i]++;
 
-        for(int i = 1; i < cnt.length; i++)
-            cnt[i] += cnt[i-1];
+class TrieNode {
+    TrieNode[] child;
+    boolean isEnd;
+    TrieNode() {
+        child = new TrieNode[26];
+        isEnd = false;
+    }
 
-        int[] output = new int[cnt[cnt.length-1]];
-        for(int i = cnt.length-1; i >=0; i--)
-            if(cnt[i]-1 >= 0)
-            {
-                res.add(i);
-                cnt[i]--;
-            }
-*/
+    /** Inserts a word into the trie. */
+    public void insert(String w) {
+        TrieNode at = this;
+        for(int i = 0; i < w.length(); i++) {
+            if(at.child[w.charAt(i)-'a'] == null) // this if is IMPORTANT!!!!! o.w. the info inside node will be gone!!!!
+                at.child[w.charAt(i)-'a'] = new TrieNode();
+            at = at.child[w.charAt(i)-'a'];
+        }
+        at.isEnd = true;
+    }
+
+    /** Returns if the word is in the trie. */
+    public boolean search(String w) {
+        TrieNode at = this;
+        for(int i = 0; i < w.length(); i++) {
+            if(at.child[w.charAt(i)-'a'] == null) return false;
+            at = at.child[w.charAt(i)-'a'];
+        }
+        return at.isEnd;
+    }
+    // word may contain dots '.' where dots can be matched with any letter.
+    public boolean searchWithDot(String w) {
+        return search(w, 0, this);
+    }
+    public boolean search(String w, int idx, TrieNode at) {
+        if(idx == w.length()) return at!= null && at.isEnd;
+        if(at == null) return false;
+
+        if(w.charAt(idx) != '.') {
+            return search(w,idx+1,at.child[w.charAt(idx)-'a']);
+        } else {
+            for(int j = 0; j < 26; j++)
+                if(at.child[j] != null)
+                    if(search(w,idx+1,at.child[j]))
+                        return true;
+            return false;
+        }
+
+    }
+
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String w) {
+        TrieNode at = this;
+        for(int i = 0; i < w.length(); i++) {
+            if(at.child[w.charAt(i)-'a'] == null) return false;
+            at = at.child[w.charAt(i)-'a'];
+        }
+        return true;
+    }
+}
+class Trie {
+    TrieNode root;
+
+    /** Initialize your data structure here. */
+    public Trie() {
+        root = new TrieNode();
+    }
+}
